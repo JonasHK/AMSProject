@@ -9,10 +9,28 @@
 #define F_CPU 16000000
 #include <util/delay.h>
 #include "d_steppermotor.h"
+#include "uart.h"
+#include "d_SysTime.h"
 
 int main(void)
 {
-    /* Replace with your application code */
+	
+	/* Test of modules: uart and SysTime
+	InitUART(UART0,115200,8,0);
+	SysTime timer;
+	while (1)
+	{
+		long t1 = timer.Micro();
+		_delay_us(500);
+		long t2 = timer.Micro();
+		SendString(UART0,"t1: ");
+		SendInteger(UART0,t1);
+		SendString(UART0,"\n\rt2: ");
+		SendInteger(UART0,t2);
+		SendString(UART0,"\n\n\r");
+	}
+	*/
+	/* Test of modules: pin, stepper;ptpr
 	pin p0(&DDRB,&PORTB,0);
 	pin p1(&DDRB,&PORTB,1);
 	pin p2(&DDRB,&PORTB,2);
@@ -44,6 +62,7 @@ int main(void)
 		base.step(false);
 		counter++;
 	 }
+	 // Test of modules: Pin
 	while (1) 
     {
 		p0.low();
@@ -58,5 +77,6 @@ int main(void)
 		_delay_ms(300);
     }
 	return 0;
+	*/
 }
 

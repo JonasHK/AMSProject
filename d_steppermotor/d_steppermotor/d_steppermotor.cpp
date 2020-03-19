@@ -14,7 +14,77 @@ stepperMotor::stepperMotor(pin** pinP){
 	
 	pins_[0]->high();
 	pinStateMEM_[0] = true;
+	pinStateMEM_[1] = false;
+	pinStateMEM_[2] = false;
+	pinStateMEM_[3] = false;
 }
+
+bool stepperMotor::isOnPosition() const {
+	return stepperStepPosition_ == stepperStepTargetPosition_;
+}
+
+int stepperMotor::getPosition() const {
+	return stepperStepPosition_;
+}
+
+void stepperMotor::setPosition(int value) {
+	stepperStepPosition_ = value;
+	stepperStepTargetPosition_ = value;
+}
+
+void stepperMotor::stepToPosition(int value) {
+	stepperStepTargetPosition_ = value;
+}
+
+void stepperMotor::stepRelative(int value) {
+	value += stepperStepPosition_;
+	stepToPosition(value);
+}
+
+float stepperMotor::getPositionRad() const {
+	return stepperStepPosition_ / radToStepFactor_;
+}
+
+void stepperMotor::setPositionRad(float rad) {
+	setPosition(rad * radToStepFactor_);
+}
+
+void stepperMotor::stepToPositionRad(float rad) {
+	stepperStepTargetPosition_ = rad * radToStepFactor_;
+}
+
+void stepperMotor::stepRelativeRad(float rad) {
+	stepRelative(rad * radToStepFactor_);
+}
+
+void stepperMotor::update() {
+	while (stepperStepTargetPosition_ < stepperStepPosition_) {
+		step(true);
+		/*
+		digitalWrite(dirPin, HIGH);
+		delayMicroseconds(5);
+		digitalWrite(stepPin, HIGH);
+		delayMicroseconds(20);
+		digitalWrite(stepPin, LOW);
+		delayMicroseconds(5);*/
+		stepperStepPosition_--;
+	}
+	while (stepperStepTargetPosition_ > stepperStepPosition_) {
+		step(false);
+		/*
+		digitalWrite(dirPin, LOW);
+		delayMicroseconds(5);
+		digitalWrite(stepPin, HIGH);
+		delayMicroseconds(20);
+		digitalWrite(stepPin, LOW);
+		delayMicroseconds(5);*/
+		stepperStepPosition_++;
+	}
+}
+
+void stepperMotor::setReductionRatio(float gearRatio, int stepsPerRev) {
+	radToStepFactor_ = gearRatio * stepsPerRev / 2 / M_PI;
+};
 
 void stepperMotor::step(bool clockwice){
 	if (clockwice){
@@ -63,8 +133,7 @@ void stepperMotor::step(bool clockwice){
 }
 void stepperMotor::rotateDegree(int16_t degrees){
 	bool orientation = (degrees > 0 ? true : false);
-	int16_t stepCount = fabs(degrees)*steps_pr_Degree;
-	for (stepCount;stepCount!=0;stepCount--){
+	for (int16_t stepCount = fabs(degrees)*steps_pr_Degree;stepCount!=0;stepCount--){
 		step(orientation);
 		_delay_ms(300);	
 	}

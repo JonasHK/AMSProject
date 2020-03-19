@@ -15,7 +15,7 @@ class pin
 	void low();
 	protected:
 	private:
-	bool state_ = 0;
+	bool state_;
 	volatile uint8_t* port_;
 	uint8_t pinno_;
 };

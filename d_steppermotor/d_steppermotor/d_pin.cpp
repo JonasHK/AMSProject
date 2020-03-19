@@ -11,6 +11,7 @@ pin::pin(volatile uint8_t* DDRadr, volatile uint8_t* port, uint8_t pinno){
 	port_  = port;
 	pinno_ = pinno;
 	low();
+	state_ = false;
 }
 // Sets the pin high
 void pin::high(){

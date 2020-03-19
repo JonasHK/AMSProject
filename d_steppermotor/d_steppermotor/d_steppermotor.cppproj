@@ -30,15 +30,15 @@
     <EraseKey />
     <AsfFrameworkConfig>
       <framework-data xmlns="">
-  <options />
-  <configurations />
-  <files />
-  <documentation help="" />
-  <offline-documentation help="" />
-  <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.47.0" />
-  </dependencies>
-</framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.47.0" />
+        </dependencies>
+      </framework-data>
     </AsfFrameworkConfig>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -155,6 +155,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="armGeometry.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="armGeometry.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="c_robotarm.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -170,10 +176,28 @@
     <Compile Include="d_steppermotor.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="c_interpolation.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="c_interpolation.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="d_pin.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="d_SysTime.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="d_SysTime.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="uart.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="uart.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
