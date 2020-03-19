@@ -1,9 +1,3 @@
-/*
- * JoyStickController.cpp
- *
- * Created: 27-02-2020 10:37:08
- * Author : troel
- */ 
 #include <avr/io.h>
 #define F_CPU 16e6
 #include <util/delay.h>
@@ -16,16 +10,22 @@
 
 //Data to send to arm controller
 #include "DataToSendClasses/BaseDataClass.h"
+#include "DataToSendClasses/DoubleClickDataToSend.h"
+#include "DataToSendClasses/SingleClickDataToSend.h"
+#include "DataToSendClasses/PositionDataToSend.h"
 
-
+//Timer 1 control
 #define TIMER1_HIGH_VALUE 0b00001011
 #define TIMER1_LOW_VALUE  0b11011100 //15540 in total, 250 ms 
 
-UART sender(16e6, 9600);
+//Data classes for switching
+BaseDataClass *dataController;
+PositionDataToSend postionClass;
+DoubleClickDataToSend doubleClickClass;
+SingleClickDataToSend singleClickClass;
 
-uint8_t counter = 0;
+
 // External interrupt 0/PORTD Pin 2
-
 void resetTimer1()
 {
 	TCNT1H = TIMER1_HIGH_VALUE; //Reset counter
@@ -37,12 +37,16 @@ ISR(INT0_vect)
 {
 	if(doubleClickFlag)
 	{
+		//Timer interrupted, double click
+		
 		TCCR1B &= 0b11111000; //Stop timer
 		resetTimer1();
 		doubleClickFlag = false;
+		dataController = &doubleClickClass;
 	}
 	else
 	{
+		//Start the timer to wait for double click
 		doubleClickFlag = true;
 		TCCR1B = (1<<CS10) | (1<<CS11);;  // Timer mode with 64 prescler
 	}
@@ -51,15 +55,17 @@ ISR(INT0_vect)
 // Timer 1 overflow interrupt
 ISR(TIMER1_OVF_vect)
 {
-	PORTD ^= (1 << 4);
+	//Timer timed out, single click
 	TCCR1B &= 0b11111000; //Stop timer
 	resetTimer1();
 	doubleClickFlag = false;//No double click
+	dataController = &singleClickClass;
 }
 
 
 int main(void)
 {
+	UART sender(16e6, 9600);
 	EICRA |= 0b00000010; //Falling edge of PORTD pin 2
 	EIMSK |= 1; //Enable INT0 - PORTD pin 2	
 	
@@ -70,8 +76,17 @@ int main(void)
 	TCCR1A = 0x00;
 	TIMSK1 = (1 << TOIE1) ;   // Enable timer1 overflow interrupt(TOIE1)
 	sei();        // Enable global interrupts by setting global interrupt enable bit in SREG
+	
+	char buffer[20];
     while (1) 
     {
+		dataController = &postionClass;
+		while(dataController->Continue())
+		{
+			dataController->GetData(buffer);
+			sender.Write(buffer);
+			sender.Write("\n");
+		}
     }
 }
 

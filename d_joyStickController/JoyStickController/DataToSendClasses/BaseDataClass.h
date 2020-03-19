@@ -17,7 +17,7 @@ class BaseDataClass
 public:
 	BaseDataClass();
 	virtual bool Continue();
-	virtual void GetData(char* string) = 0;
+	virtual void GetData(char* string);
 protected:
 private:
 

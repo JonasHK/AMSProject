@@ -5,7 +5,7 @@
 * Author: troel
 */
 
-
+#include "BaseDataClass.h"
 #ifndef __SINGLECLICKDATATOSEND_H__
 #define __SINGLECLICKDATATOSEND_H__
 

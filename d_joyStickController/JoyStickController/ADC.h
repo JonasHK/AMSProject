@@ -13,10 +13,9 @@
 class ADConverter
 {
 public:
-	ADConverter(uint8_t channel);
-	uint16_t Read();
+	ADConverter();
+	uint16_t Read(uint8_t channel);
 private:
-	uint8_t ADCChannel;	
 };
 
 

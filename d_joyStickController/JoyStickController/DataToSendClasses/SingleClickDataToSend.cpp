@@ -7,6 +7,8 @@
 
 
 #include "SingleClickDataToSend.h"
+#include <string.h>
+#include <avr/io.h>
 
 // default constructor
 SingleClickDataToSend::SingleClickDataToSend()
@@ -15,5 +17,10 @@ SingleClickDataToSend::SingleClickDataToSend()
 
 bool SingleClickDataToSend::Continue()
 {
-	
+	return (~PIND & (1 << 2));
+}
+void SingleClickDataToSend::GetData(char* string)
+{
+	string[0] = 9;
+	string[1] = '\0';
 }
