@@ -3,389 +3,447 @@ JoyStickController.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000014  00800100  0000022c  000002a0  2**0
+  0 .data         0000000e  00800100  000002ce  00000362  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000022c  00000000  00000000  00000074  2**1
+  1 .text         000002ce  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  000002b4  2**0
+  2 .bss          00000002  0080010e  0080010e  00000370  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000370  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000002e4  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000003a0  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000088  00000000  00000000  00000324  2**0
+  5 .debug_aranges 00000080  00000000  00000000  000003e0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000dcf  00000000  00000000  000003ac  2**0
+  6 .debug_info   00000c10  00000000  00000000  00000460  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000a4b  00000000  00000000  0000117b  2**0
+  7 .debug_abbrev 000008fe  00000000  00000000  00001070  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000004d6  00000000  00000000  00001bc6  2**0
+  8 .debug_line   00000420  00000000  00000000  0000196e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  0000010c  00000000  00000000  0000209c  2**2
+  9 .debug_frame  000001a4  00000000  00000000  00001d90  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000538  00000000  00000000  000021a8  2**0
+ 10 .debug_str    00000585  00000000  00000000  00001f34  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000394  00000000  00000000  000026e0  2**0
+ 11 .debug_loc    000004ec  00000000  00000000  000024b9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000058  00000000  00000000  00002a74  2**0
+ 12 .debug_ranges 00000060  00000000  00000000  000029a5  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
-   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
-   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   0:	0c 94 35 00 	jmp	0x6a	; 0x6a <__ctors_end>
+   4:	0c 94 66 00 	jmp	0xcc	; 0xcc <__vector_1>
+   8:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+   c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  10:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  14:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  18:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  1c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  20:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  24:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  28:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  2c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  30:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  34:	0c 94 9c 00 	jmp	0x138	; 0x138 <__vector_13>
+  38:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  3c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  40:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  44:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  48:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  4c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  50:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  54:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  58:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  5c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  60:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+  64:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
 
-00000068 <__ctors_end>:
-  68:	11 24       	eor	r1, r1
-  6a:	1f be       	out	0x3f, r1	; 63
-  6c:	cf ef       	ldi	r28, 0xFF	; 255
-  6e:	d8 e0       	ldi	r29, 0x08	; 8
-  70:	de bf       	out	0x3e, r29	; 62
-  72:	cd bf       	out	0x3d, r28	; 61
+00000068 <__ctors_start>:
+  68:	dc 00       	.word	0x00dc	; ????
 
-00000074 <__do_copy_data>:
-  74:	11 e0       	ldi	r17, 0x01	; 1
-  76:	a0 e0       	ldi	r26, 0x00	; 0
-  78:	b1 e0       	ldi	r27, 0x01	; 1
-  7a:	ec e2       	ldi	r30, 0x2C	; 44
-  7c:	f2 e0       	ldi	r31, 0x02	; 2
-  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
-  80:	05 90       	lpm	r0, Z+
-  82:	0d 92       	st	X+, r0
-  84:	a4 31       	cpi	r26, 0x14	; 20
-  86:	b1 07       	cpc	r27, r17
-  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+0000006a <__ctors_end>:
+  6a:	11 24       	eor	r1, r1
+  6c:	1f be       	out	0x3f, r1	; 63
+  6e:	cf ef       	ldi	r28, 0xFF	; 255
+  70:	d8 e0       	ldi	r29, 0x08	; 8
+  72:	de bf       	out	0x3e, r29	; 62
+  74:	cd bf       	out	0x3d, r28	; 61
 
-0000008a <__do_clear_bss>:
-  8a:	21 e0       	ldi	r18, 0x01	; 1
-  8c:	a4 e1       	ldi	r26, 0x14	; 20
-  8e:	b1 e0       	ldi	r27, 0x01	; 1
-  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+00000076 <__do_copy_data>:
+  76:	11 e0       	ldi	r17, 0x01	; 1
+  78:	a0 e0       	ldi	r26, 0x00	; 0
+  7a:	b1 e0       	ldi	r27, 0x01	; 1
+  7c:	ee ec       	ldi	r30, 0xCE	; 206
+  7e:	f2 e0       	ldi	r31, 0x02	; 2
+  80:	02 c0       	rjmp	.+4      	; 0x86 <__do_copy_data+0x10>
+  82:	05 90       	lpm	r0, Z+
+  84:	0d 92       	st	X+, r0
+  86:	ae 30       	cpi	r26, 0x0E	; 14
+  88:	b1 07       	cpc	r27, r17
+  8a:	d9 f7       	brne	.-10     	; 0x82 <__do_copy_data+0xc>
 
-00000092 <.do_clear_bss_loop>:
-  92:	1d 92       	st	X+, r1
+0000008c <__do_clear_bss>:
+  8c:	21 e0       	ldi	r18, 0x01	; 1
+  8e:	ae e0       	ldi	r26, 0x0E	; 14
+  90:	b1 e0       	ldi	r27, 0x01	; 1
+  92:	01 c0       	rjmp	.+2      	; 0x96 <.do_clear_bss_start>
 
-00000094 <.do_clear_bss_start>:
-  94:	a4 31       	cpi	r26, 0x14	; 20
-  96:	b2 07       	cpc	r27, r18
-  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
-  9a:	0e 94 78 00 	call	0xf0	; 0xf0 <main>
-  9e:	0c 94 14 01 	jmp	0x228	; 0x228 <_exit>
+00000094 <.do_clear_bss_loop>:
+  94:	1d 92       	st	X+, r1
 
-000000a2 <__bad_interrupt>:
-  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+00000096 <.do_clear_bss_start>:
+  96:	a0 31       	cpi	r26, 0x10	; 16
+  98:	b2 07       	cpc	r27, r18
+  9a:	e1 f7       	brne	.-8      	; 0x94 <.do_clear_bss_loop>
 
-000000a6 <_ZN11ADConverterC1Eh>:
- *  Author: troel
- */ 
-#include "ADC.h"
+0000009c <__do_global_ctors>:
+  9c:	10 e0       	ldi	r17, 0x00	; 0
+  9e:	c5 e3       	ldi	r28, 0x35	; 53
+  a0:	d0 e0       	ldi	r29, 0x00	; 0
+  a2:	04 c0       	rjmp	.+8      	; 0xac <__do_global_ctors+0x10>
+  a4:	21 97       	sbiw	r28, 0x01	; 1
+  a6:	fe 01       	movw	r30, r28
+  a8:	0e 94 5f 01 	call	0x2be	; 0x2be <__tablejump2__>
+  ac:	c4 33       	cpi	r28, 0x34	; 52
+  ae:	d1 07       	cpc	r29, r17
+  b0:	c9 f7       	brne	.-14     	; 0xa4 <__do_global_ctors+0x8>
+  b2:	0e 94 cb 00 	call	0x196	; 0x196 <main>
+  b6:	0c 94 65 01 	jmp	0x2ca	; 0x2ca <_exit>
 
+000000ba <__bad_interrupt>:
+  ba:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
-ADConverter::ADConverter(uint8_t channel) : ADCChannel(channel)
-  a6:	fc 01       	movw	r30, r24
-  a8:	60 83       	st	Z, r22
+000000be <_Z11resetTimer1v>:
+uint8_t counter = 0;
+// External interrupt 0/PORTD Pin 2
+
+void resetTimer1()
 {
-	ADMUX |= (1 << REFS0);//REF0 = Vcc
-  aa:	ec e7       	ldi	r30, 0x7C	; 124
-  ac:	f0 e0       	ldi	r31, 0x00	; 0
-  ae:	80 81       	ld	r24, Z
-  b0:	80 64       	ori	r24, 0x40	; 64
-  b2:	80 83       	st	Z, r24
-	ADCSRA |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0) | (1 << ADEN);//Enable, set prescaler to 128. f = 16MHz/128
-  b4:	ea e7       	ldi	r30, 0x7A	; 122
-  b6:	f0 e0       	ldi	r31, 0x00	; 0
-  b8:	80 81       	ld	r24, Z
-  ba:	87 68       	ori	r24, 0x87	; 135
-  bc:	80 83       	st	Z, r24
-  be:	08 95       	ret
+	TCNT1H = TIMER1_HIGH_VALUE; //Reset counter
+  be:	8b e0       	ldi	r24, 0x0B	; 11
+  c0:	80 93 85 00 	sts	0x0085, r24	; 0x800085 <__TEXT_REGION_LENGTH__+0x7e0085>
+	TCNT1L = TIMER1_LOW_VALUE;
+  c4:	8c ed       	ldi	r24, 0xDC	; 220
+  c6:	80 93 84 00 	sts	0x0084, r24	; 0x800084 <__TEXT_REGION_LENGTH__+0x7e0084>
+  ca:	08 95       	ret
 
-000000c0 <_ZN11ADConverter4ReadEv>:
+000000cc <__vector_1>:
 }
-uint16_t ADConverter::Read()
-{
-  c0:	dc 01       	movw	r26, r24
-	ADMUX = (ADMUX & 0xF0) | (ADCChannel & 0x0F);
-  c2:	ec e7       	ldi	r30, 0x7C	; 124
-  c4:	f0 e0       	ldi	r31, 0x00	; 0
-  c6:	90 81       	ld	r25, Z
-  c8:	8c 91       	ld	r24, X
-  ca:	28 2f       	mov	r18, r24
-  cc:	2f 70       	andi	r18, 0x0F	; 15
-  ce:	89 2f       	mov	r24, r25
-  d0:	80 7f       	andi	r24, 0xF0	; 240
-  d2:	82 2b       	or	r24, r18
-  d4:	80 83       	st	Z, r24
-	
-	ADCSRA |= (1 << ADSC);
-  d6:	ea e7       	ldi	r30, 0x7A	; 122
-  d8:	f0 e0       	ldi	r31, 0x00	; 0
-  da:	80 81       	ld	r24, Z
-  dc:	80 64       	ori	r24, 0x40	; 64
-  de:	80 83       	st	Z, r24
-	
-	while(ADCSRA & (1 << ADSC));
-  e0:	80 81       	ld	r24, Z
-  e2:	86 fd       	sbrc	r24, 6
-  e4:	fd cf       	rjmp	.-6      	; 0xe0 <_ZN11ADConverter4ReadEv+0x20>
-	return ADC;
-  e6:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__TEXT_REGION_LENGTH__+0x7e0078>
-  ea:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7e0079>
-  ee:	08 95       	ret
 
-000000f0 <main>:
-#include <util/delay.h>
-#include "UART.h"
-#include "ADC.h"
+bool doubleClickFlag = false;//Flag used for double click timing, not an indicator of double click
+ISR(INT0_vect)
+{
+  cc:	1f 92       	push	r1
+  ce:	0f 92       	push	r0
+  d0:	0f b6       	in	r0, 0x3f	; 63
+  d2:	0f 92       	push	r0
+  d4:	11 24       	eor	r1, r1
+  d6:	2f 93       	push	r18
+  d8:	3f 93       	push	r19
+  da:	4f 93       	push	r20
+  dc:	5f 93       	push	r21
+  de:	6f 93       	push	r22
+  e0:	7f 93       	push	r23
+  e2:	8f 93       	push	r24
+  e4:	9f 93       	push	r25
+  e6:	af 93       	push	r26
+  e8:	bf 93       	push	r27
+  ea:	ef 93       	push	r30
+  ec:	ff 93       	push	r31
+	if(doubleClickFlag)
+  ee:	80 91 0e 01 	lds	r24, 0x010E	; 0x80010e <__data_end>
+  f2:	88 23       	and	r24, r24
+  f4:	51 f0       	breq	.+20     	; 0x10a <__vector_1+0x3e>
+	{
+		TCCR1B &= 0b11111000; //Stop timer
+  f6:	e1 e8       	ldi	r30, 0x81	; 129
+  f8:	f0 e0       	ldi	r31, 0x00	; 0
+  fa:	80 81       	ld	r24, Z
+  fc:	88 7f       	andi	r24, 0xF8	; 248
+  fe:	80 83       	st	Z, r24
+		resetTimer1();
+ 100:	0e 94 5f 00 	call	0xbe	; 0xbe <_Z11resetTimer1v>
+		doubleClickFlag = false;
+ 104:	10 92 0e 01 	sts	0x010E, r1	; 0x80010e <__data_end>
+ 108:	06 c0       	rjmp	.+12     	; 0x116 <__vector_1+0x4a>
+	}
+	else
+	{
+		doubleClickFlag = true;
+ 10a:	81 e0       	ldi	r24, 0x01	; 1
+ 10c:	80 93 0e 01 	sts	0x010E, r24	; 0x80010e <__data_end>
+		TCCR1B = (1<<CS10) | (1<<CS11);;  // Timer mode with 64 prescler
+ 110:	83 e0       	ldi	r24, 0x03	; 3
+ 112:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__TEXT_REGION_LENGTH__+0x7e0081>
+	}
+}
+ 116:	ff 91       	pop	r31
+ 118:	ef 91       	pop	r30
+ 11a:	bf 91       	pop	r27
+ 11c:	af 91       	pop	r26
+ 11e:	9f 91       	pop	r25
+ 120:	8f 91       	pop	r24
+ 122:	7f 91       	pop	r23
+ 124:	6f 91       	pop	r22
+ 126:	5f 91       	pop	r21
+ 128:	4f 91       	pop	r20
+ 12a:	3f 91       	pop	r19
+ 12c:	2f 91       	pop	r18
+ 12e:	0f 90       	pop	r0
+ 130:	0f be       	out	0x3f, r0	; 63
+ 132:	0f 90       	pop	r0
+ 134:	1f 90       	pop	r1
+ 136:	18 95       	reti
+
+00000138 <__vector_13>:
+
+// Timer 1 overflow interrupt
+ISR(TIMER1_OVF_vect)
+{
+ 138:	1f 92       	push	r1
+ 13a:	0f 92       	push	r0
+ 13c:	0f b6       	in	r0, 0x3f	; 63
+ 13e:	0f 92       	push	r0
+ 140:	11 24       	eor	r1, r1
+ 142:	2f 93       	push	r18
+ 144:	3f 93       	push	r19
+ 146:	4f 93       	push	r20
+ 148:	5f 93       	push	r21
+ 14a:	6f 93       	push	r22
+ 14c:	7f 93       	push	r23
+ 14e:	8f 93       	push	r24
+ 150:	9f 93       	push	r25
+ 152:	af 93       	push	r26
+ 154:	bf 93       	push	r27
+ 156:	ef 93       	push	r30
+ 158:	ff 93       	push	r31
+	PORTD ^= (1 << 4);
+ 15a:	9b b1       	in	r25, 0x0b	; 11
+ 15c:	80 e1       	ldi	r24, 0x10	; 16
+ 15e:	89 27       	eor	r24, r25
+ 160:	8b b9       	out	0x0b, r24	; 11
+	TCCR1B &= 0b11111000; //Stop timer
+ 162:	e1 e8       	ldi	r30, 0x81	; 129
+ 164:	f0 e0       	ldi	r31, 0x00	; 0
+ 166:	80 81       	ld	r24, Z
+ 168:	88 7f       	andi	r24, 0xF8	; 248
+ 16a:	80 83       	st	Z, r24
+	resetTimer1();
+ 16c:	0e 94 5f 00 	call	0xbe	; 0xbe <_Z11resetTimer1v>
+	doubleClickFlag = false;//No double click
+ 170:	10 92 0e 01 	sts	0x010E, r1	; 0x80010e <__data_end>
+}
+ 174:	ff 91       	pop	r31
+ 176:	ef 91       	pop	r30
+ 178:	bf 91       	pop	r27
+ 17a:	af 91       	pop	r26
+ 17c:	9f 91       	pop	r25
+ 17e:	8f 91       	pop	r24
+ 180:	7f 91       	pop	r23
+ 182:	6f 91       	pop	r22
+ 184:	5f 91       	pop	r21
+ 186:	4f 91       	pop	r20
+ 188:	3f 91       	pop	r19
+ 18a:	2f 91       	pop	r18
+ 18c:	0f 90       	pop	r0
+ 18e:	0f be       	out	0x3f, r0	; 63
+ 190:	0f 90       	pop	r0
+ 192:	1f 90       	pop	r1
+ 194:	18 95       	reti
+
+00000196 <main>:
+
 
 int main(void)
 {
-  f0:	cf 93       	push	r28
-  f2:	df 93       	push	r29
-  f4:	00 d0       	rcall	.+0      	; 0xf6 <main+0x6>
-  f6:	cd b7       	in	r28, 0x3d	; 61
-  f8:	de b7       	in	r29, 0x3e	; 62
-	ADConverter adcx(0);
-  fa:	60 e0       	ldi	r22, 0x00	; 0
-  fc:	ce 01       	movw	r24, r28
-  fe:	01 96       	adiw	r24, 0x01	; 1
- 100:	0e 94 53 00 	call	0xa6	; 0xa6 <_ZN11ADConverterC1Eh>
-    /* Replace with your application code */
-	UART sender(16e6, 9600);
- 104:	00 e8       	ldi	r16, 0x80	; 128
- 106:	15 e2       	ldi	r17, 0x25	; 37
- 108:	20 e0       	ldi	r18, 0x00	; 0
- 10a:	30 e0       	ldi	r19, 0x00	; 0
- 10c:	40 e0       	ldi	r20, 0x00	; 0
- 10e:	54 e2       	ldi	r21, 0x24	; 36
- 110:	64 ef       	ldi	r22, 0xF4	; 244
- 112:	70 e0       	ldi	r23, 0x00	; 0
- 114:	ce 01       	movw	r24, r28
- 116:	02 96       	adiw	r24, 0x02	; 2
- 118:	0e 94 c9 00 	call	0x192	; 0x192 <_ZN4UARTC1Emm>
+	EICRA |= 0b00000010; //Falling edge of PORTD pin 2
+ 196:	e9 e6       	ldi	r30, 0x69	; 105
+ 198:	f0 e0       	ldi	r31, 0x00	; 0
+ 19a:	80 81       	ld	r24, Z
+ 19c:	82 60       	ori	r24, 0x02	; 2
+ 19e:	80 83       	st	Z, r24
+	EIMSK |= 1; //Enable INT0 - PORTD pin 2	
+ 1a0:	e8 9a       	sbi	0x1d, 0	; 29
+	
+	
+	DDRD = (0x01 << 4);
+ 1a2:	80 e1       	ldi	r24, 0x10	; 16
+ 1a4:	8a b9       	out	0x0a, r24	; 10
+	resetTimer1();
+ 1a6:	0e 94 5f 00 	call	0xbe	; 0xbe <_Z11resetTimer1v>
+
+	TCCR1A = 0x00;
+ 1aa:	10 92 80 00 	sts	0x0080, r1	; 0x800080 <__TEXT_REGION_LENGTH__+0x7e0080>
+	TIMSK1 = (1 << TOIE1) ;   // Enable timer1 overflow interrupt(TOIE1)
+ 1ae:	81 e0       	ldi	r24, 0x01	; 1
+ 1b0:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <__TEXT_REGION_LENGTH__+0x7e006f>
+	sei();        // Enable global interrupts by setting global interrupt enable bit in SREG
+ 1b4:	78 94       	sei
+ 1b6:	ff cf       	rjmp	.-2      	; 0x1b6 <main+0x20>
+
+000001b8 <_GLOBAL__sub_I_sender>:
     while (1) 
     {
-		adcx.Read();
- 11c:	ce 01       	movw	r24, r28
- 11e:	01 96       	adiw	r24, 0x01	; 1
- 120:	0e 94 60 00 	call	0xc0	; 0xc0 <_ZN11ADConverter4ReadEv>
-		sender.Write("Hello");
- 124:	60 e0       	ldi	r22, 0x00	; 0
- 126:	71 e0       	ldi	r23, 0x01	; 1
- 128:	ce 01       	movw	r24, r28
- 12a:	02 96       	adiw	r24, 0x02	; 2
- 12c:	0e 94 b3 00 	call	0x166	; 0x166 <_ZN4UART5WriteEPKc>
-	#else
-		//round up by default
-		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
-	#endif
-
-	__builtin_avr_delay_cycles(__ticks_dc);
- 130:	2f ef       	ldi	r18, 0xFF	; 255
- 132:	89 e6       	ldi	r24, 0x69	; 105
- 134:	98 e1       	ldi	r25, 0x18	; 24
- 136:	21 50       	subi	r18, 0x01	; 1
- 138:	80 40       	sbci	r24, 0x00	; 0
- 13a:	90 40       	sbci	r25, 0x00	; 0
- 13c:	e1 f7       	brne	.-8      	; 0x136 <main+0x46>
- 13e:	00 c0       	rjmp	.+0      	; 0x140 <main+0x50>
- 140:	00 00       	nop
- 142:	ec cf       	rjmp	.-40     	; 0x11c <main+0x2c>
-
-00000144 <_ZN4UART8sendCharEc>:
-	}
-	Write("\n");
-	return line;
+    }
 }
-uint8_t UART::sendChar(char c)
-{
- 144:	cf 93       	push	r28
- 146:	c6 2f       	mov	r28, r22
-	if (c == '\n')
- 148:	6a 30       	cpi	r22, 0x0A	; 10
- 14a:	19 f4       	brne	.+6      	; 0x152 <_ZN4UART8sendCharEc+0xe>
-	{
-		sendChar('\r');
- 14c:	6d e0       	ldi	r22, 0x0D	; 13
- 14e:	0e 94 a2 00 	call	0x144	; 0x144 <_ZN4UART8sendCharEc>
-	}
-	while (!(UCSR0A & (1<<UDRE0))); //waits between transmissions
- 152:	e0 ec       	ldi	r30, 0xC0	; 192
- 154:	f0 e0       	ldi	r31, 0x00	; 0
- 156:	80 81       	ld	r24, Z
- 158:	85 ff       	sbrs	r24, 5
- 15a:	fd cf       	rjmp	.-6      	; 0x156 <_ZN4UART8sendCharEc+0x12>
-	UDR0 = c; //Sends the UART transmission
- 15c:	c0 93 c6 00 	sts	0x00C6, r28	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
-	return 0;
+ 1b8:	0f 93       	push	r16
+ 1ba:	1f 93       	push	r17
+
+
+#define TIMER1_HIGH_VALUE 0b00001011
+#define TIMER1_LOW_VALUE  0b11011100 //15540 in total, 250 ms 
+
+UART sender(16e6, 9600);
+ 1bc:	00 e8       	ldi	r16, 0x80	; 128
+ 1be:	15 e2       	ldi	r17, 0x25	; 37
+ 1c0:	20 e0       	ldi	r18, 0x00	; 0
+ 1c2:	30 e0       	ldi	r19, 0x00	; 0
+ 1c4:	40 e0       	ldi	r20, 0x00	; 0
+ 1c6:	54 e2       	ldi	r21, 0x24	; 36
+ 1c8:	64 ef       	ldi	r22, 0xF4	; 244
+ 1ca:	70 e0       	ldi	r23, 0x00	; 0
+ 1cc:	8f e0       	ldi	r24, 0x0F	; 15
+ 1ce:	91 e0       	ldi	r25, 0x01	; 1
+ 1d0:	0e 94 14 01 	call	0x228	; 0x228 <_ZN4UARTC1Emm>
+	TIMSK1 = (1 << TOIE1) ;   // Enable timer1 overflow interrupt(TOIE1)
+	sei();        // Enable global interrupts by setting global interrupt enable bit in SREG
+    while (1) 
+    {
+    }
 }
- 160:	80 e0       	ldi	r24, 0x00	; 0
- 162:	cf 91       	pop	r28
- 164:	08 95       	ret
+ 1d4:	1f 91       	pop	r17
+ 1d6:	0f 91       	pop	r16
+ 1d8:	08 95       	ret
 
-00000166 <_ZN4UART5WriteEPKc>:
-	Write("Initialized\n");
-	//Test
+000001da <_ZN4UART8sendCharEc>:
+ 1da:	cf 93       	push	r28
+ 1dc:	c6 2f       	mov	r28, r22
+ 1de:	6a 30       	cpi	r22, 0x0A	; 10
+ 1e0:	19 f4       	brne	.+6      	; 0x1e8 <_ZN4UART8sendCharEc+0xe>
+ 1e2:	6d e0       	ldi	r22, 0x0D	; 13
+ 1e4:	0e 94 ed 00 	call	0x1da	; 0x1da <_ZN4UART8sendCharEc>
+ 1e8:	e0 ec       	ldi	r30, 0xC0	; 192
+ 1ea:	f0 e0       	ldi	r31, 0x00	; 0
+ 1ec:	80 81       	ld	r24, Z
+ 1ee:	85 ff       	sbrs	r24, 5
+ 1f0:	fd cf       	rjmp	.-6      	; 0x1ec <_ZN4UART8sendCharEc+0x12>
+ 1f2:	c0 93 c6 00 	sts	0x00C6, r28	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+ 1f6:	80 e0       	ldi	r24, 0x00	; 0
+ 1f8:	cf 91       	pop	r28
+ 1fa:	08 95       	ret
 
-}
-uint8_t UART::Write(const char* string)
-{
- 166:	0f 93       	push	r16
- 168:	1f 93       	push	r17
- 16a:	cf 93       	push	r28
- 16c:	df 93       	push	r29
- 16e:	eb 01       	movw	r28, r22
-	uint16_t i = 0;
-	
-	while(*(string + i) != '\0')
- 170:	68 81       	ld	r22, Y
- 172:	66 23       	and	r22, r22
- 174:	41 f0       	breq	.+16     	; 0x186 <_ZN4UART5WriteEPKc+0x20>
- 176:	8c 01       	movw	r16, r24
- 178:	21 96       	adiw	r28, 0x01	; 1
-	{
-		sendChar(*(string + i));
- 17a:	c8 01       	movw	r24, r16
- 17c:	0e 94 a2 00 	call	0x144	; 0x144 <_ZN4UART8sendCharEc>
-}
-uint8_t UART::Write(const char* string)
-{
-	uint16_t i = 0;
-	
-	while(*(string + i) != '\0')
- 180:	69 91       	ld	r22, Y+
- 182:	61 11       	cpse	r22, r1
- 184:	fa cf       	rjmp	.-12     	; 0x17a <_ZN4UART5WriteEPKc+0x14>
-		sendChar(*(string + i));
-		++i;
-	}
-	
-	return 0;
-}
- 186:	80 e0       	ldi	r24, 0x00	; 0
- 188:	df 91       	pop	r29
- 18a:	cf 91       	pop	r28
- 18c:	1f 91       	pop	r17
- 18e:	0f 91       	pop	r16
- 190:	08 95       	ret
-
-00000192 <_ZN4UARTC1Emm>:
- * Created: 27-02-2020 20:43:18
- *  Author: troel
- */ 
-#include "UART.h"
-
-UART::UART(uint32_t fcpu, uint32_t BAUDRATE)
- 192:	0f 93       	push	r16
- 194:	1f 93       	push	r17
- 196:	cf 93       	push	r28
- 198:	df 93       	push	r29
- 19a:	ec 01       	movw	r28, r24
-{
-	UBRR0 = fcpu/16/BAUDRATE-1; //Sets the Baudrate
- 19c:	cb 01       	movw	r24, r22
- 19e:	ba 01       	movw	r22, r20
- 1a0:	68 94       	set
- 1a2:	13 f8       	bld	r1, 3
- 1a4:	96 95       	lsr	r25
- 1a6:	87 95       	ror	r24
- 1a8:	77 95       	ror	r23
- 1aa:	67 95       	ror	r22
- 1ac:	16 94       	lsr	r1
- 1ae:	d1 f7       	brne	.-12     	; 0x1a4 <_ZN4UARTC1Emm+0x12>
- 1b0:	a9 01       	movw	r20, r18
- 1b2:	98 01       	movw	r18, r16
- 1b4:	0e 94 f2 00 	call	0x1e4	; 0x1e4 <__udivmodsi4>
- 1b8:	21 50       	subi	r18, 0x01	; 1
- 1ba:	31 09       	sbc	r19, r1
- 1bc:	30 93 c5 00 	sts	0x00C5, r19	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
- 1c0:	20 93 c4 00 	sts	0x00C4, r18	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
-	
-	UCSR0B = (1<<RXEN0)|(1<<TXEN0); //Enables input and output
- 1c4:	88 e1       	ldi	r24, 0x18	; 24
- 1c6:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
-	UCSR0C = (3<<UCSZ00); 	//Set communication as 8bit(And 1 stop bit is default.)
- 1ca:	86 e0       	ldi	r24, 0x06	; 6
- 1cc:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
-	
-	Write("Initialized\n");
- 1d0:	66 e0       	ldi	r22, 0x06	; 6
- 1d2:	71 e0       	ldi	r23, 0x01	; 1
- 1d4:	ce 01       	movw	r24, r28
- 1d6:	0e 94 b3 00 	call	0x166	; 0x166 <_ZN4UART5WriteEPKc>
-	//Test
-
-}
- 1da:	df 91       	pop	r29
- 1dc:	cf 91       	pop	r28
- 1de:	1f 91       	pop	r17
- 1e0:	0f 91       	pop	r16
- 1e2:	08 95       	ret
-
-000001e4 <__udivmodsi4>:
- 1e4:	a1 e2       	ldi	r26, 0x21	; 33
- 1e6:	1a 2e       	mov	r1, r26
- 1e8:	aa 1b       	sub	r26, r26
- 1ea:	bb 1b       	sub	r27, r27
- 1ec:	fd 01       	movw	r30, r26
- 1ee:	0d c0       	rjmp	.+26     	; 0x20a <__udivmodsi4_ep>
-
-000001f0 <__udivmodsi4_loop>:
- 1f0:	aa 1f       	adc	r26, r26
- 1f2:	bb 1f       	adc	r27, r27
- 1f4:	ee 1f       	adc	r30, r30
- 1f6:	ff 1f       	adc	r31, r31
- 1f8:	a2 17       	cp	r26, r18
- 1fa:	b3 07       	cpc	r27, r19
- 1fc:	e4 07       	cpc	r30, r20
- 1fe:	f5 07       	cpc	r31, r21
- 200:	20 f0       	brcs	.+8      	; 0x20a <__udivmodsi4_ep>
- 202:	a2 1b       	sub	r26, r18
- 204:	b3 0b       	sbc	r27, r19
- 206:	e4 0b       	sbc	r30, r20
- 208:	f5 0b       	sbc	r31, r21
-
-0000020a <__udivmodsi4_ep>:
- 20a:	66 1f       	adc	r22, r22
- 20c:	77 1f       	adc	r23, r23
- 20e:	88 1f       	adc	r24, r24
- 210:	99 1f       	adc	r25, r25
- 212:	1a 94       	dec	r1
- 214:	69 f7       	brne	.-38     	; 0x1f0 <__udivmodsi4_loop>
- 216:	60 95       	com	r22
- 218:	70 95       	com	r23
- 21a:	80 95       	com	r24
- 21c:	90 95       	com	r25
- 21e:	9b 01       	movw	r18, r22
- 220:	ac 01       	movw	r20, r24
- 222:	bd 01       	movw	r22, r26
- 224:	cf 01       	movw	r24, r30
+000001fc <_ZN4UART5WriteEPKc>:
+ 1fc:	0f 93       	push	r16
+ 1fe:	1f 93       	push	r17
+ 200:	cf 93       	push	r28
+ 202:	df 93       	push	r29
+ 204:	eb 01       	movw	r28, r22
+ 206:	68 81       	ld	r22, Y
+ 208:	66 23       	and	r22, r22
+ 20a:	41 f0       	breq	.+16     	; 0x21c <_ZN4UART5WriteEPKc+0x20>
+ 20c:	8c 01       	movw	r16, r24
+ 20e:	21 96       	adiw	r28, 0x01	; 1
+ 210:	c8 01       	movw	r24, r16
+ 212:	0e 94 ed 00 	call	0x1da	; 0x1da <_ZN4UART8sendCharEc>
+ 216:	69 91       	ld	r22, Y+
+ 218:	61 11       	cpse	r22, r1
+ 21a:	fa cf       	rjmp	.-12     	; 0x210 <_ZN4UART5WriteEPKc+0x14>
+ 21c:	80 e0       	ldi	r24, 0x00	; 0
+ 21e:	df 91       	pop	r29
+ 220:	cf 91       	pop	r28
+ 222:	1f 91       	pop	r17
+ 224:	0f 91       	pop	r16
  226:	08 95       	ret
 
-00000228 <_exit>:
- 228:	f8 94       	cli
+00000228 <_ZN4UARTC1Emm>:
+ 228:	0f 93       	push	r16
+ 22a:	1f 93       	push	r17
+ 22c:	cf 93       	push	r28
+ 22e:	df 93       	push	r29
+ 230:	ec 01       	movw	r28, r24
+ 232:	cb 01       	movw	r24, r22
+ 234:	ba 01       	movw	r22, r20
+ 236:	68 94       	set
+ 238:	13 f8       	bld	r1, 3
+ 23a:	96 95       	lsr	r25
+ 23c:	87 95       	ror	r24
+ 23e:	77 95       	ror	r23
+ 240:	67 95       	ror	r22
+ 242:	16 94       	lsr	r1
+ 244:	d1 f7       	brne	.-12     	; 0x23a <_ZN4UARTC1Emm+0x12>
+ 246:	a9 01       	movw	r20, r18
+ 248:	98 01       	movw	r18, r16
+ 24a:	0e 94 3d 01 	call	0x27a	; 0x27a <__udivmodsi4>
+ 24e:	21 50       	subi	r18, 0x01	; 1
+ 250:	31 09       	sbc	r19, r1
+ 252:	30 93 c5 00 	sts	0x00C5, r19	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
+ 256:	20 93 c4 00 	sts	0x00C4, r18	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
+ 25a:	88 e1       	ldi	r24, 0x18	; 24
+ 25c:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
+ 260:	86 e0       	ldi	r24, 0x06	; 6
+ 262:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
+ 266:	60 e0       	ldi	r22, 0x00	; 0
+ 268:	71 e0       	ldi	r23, 0x01	; 1
+ 26a:	ce 01       	movw	r24, r28
+ 26c:	0e 94 fe 00 	call	0x1fc	; 0x1fc <_ZN4UART5WriteEPKc>
+ 270:	df 91       	pop	r29
+ 272:	cf 91       	pop	r28
+ 274:	1f 91       	pop	r17
+ 276:	0f 91       	pop	r16
+ 278:	08 95       	ret
 
-0000022a <__stop_program>:
- 22a:	ff cf       	rjmp	.-2      	; 0x22a <__stop_program>
+0000027a <__udivmodsi4>:
+ 27a:	a1 e2       	ldi	r26, 0x21	; 33
+ 27c:	1a 2e       	mov	r1, r26
+ 27e:	aa 1b       	sub	r26, r26
+ 280:	bb 1b       	sub	r27, r27
+ 282:	fd 01       	movw	r30, r26
+ 284:	0d c0       	rjmp	.+26     	; 0x2a0 <__udivmodsi4_ep>
+
+00000286 <__udivmodsi4_loop>:
+ 286:	aa 1f       	adc	r26, r26
+ 288:	bb 1f       	adc	r27, r27
+ 28a:	ee 1f       	adc	r30, r30
+ 28c:	ff 1f       	adc	r31, r31
+ 28e:	a2 17       	cp	r26, r18
+ 290:	b3 07       	cpc	r27, r19
+ 292:	e4 07       	cpc	r30, r20
+ 294:	f5 07       	cpc	r31, r21
+ 296:	20 f0       	brcs	.+8      	; 0x2a0 <__udivmodsi4_ep>
+ 298:	a2 1b       	sub	r26, r18
+ 29a:	b3 0b       	sbc	r27, r19
+ 29c:	e4 0b       	sbc	r30, r20
+ 29e:	f5 0b       	sbc	r31, r21
+
+000002a0 <__udivmodsi4_ep>:
+ 2a0:	66 1f       	adc	r22, r22
+ 2a2:	77 1f       	adc	r23, r23
+ 2a4:	88 1f       	adc	r24, r24
+ 2a6:	99 1f       	adc	r25, r25
+ 2a8:	1a 94       	dec	r1
+ 2aa:	69 f7       	brne	.-38     	; 0x286 <__udivmodsi4_loop>
+ 2ac:	60 95       	com	r22
+ 2ae:	70 95       	com	r23
+ 2b0:	80 95       	com	r24
+ 2b2:	90 95       	com	r25
+ 2b4:	9b 01       	movw	r18, r22
+ 2b6:	ac 01       	movw	r20, r24
+ 2b8:	bd 01       	movw	r22, r26
+ 2ba:	cf 01       	movw	r24, r30
+ 2bc:	08 95       	ret
+
+000002be <__tablejump2__>:
+ 2be:	ee 0f       	add	r30, r30
+ 2c0:	ff 1f       	adc	r31, r31
+ 2c2:	05 90       	lpm	r0, Z+
+ 2c4:	f4 91       	lpm	r31, Z
+ 2c6:	e0 2d       	mov	r30, r0
+ 2c8:	09 94       	ijmp
+
+000002ca <_exit>:
+ 2ca:	f8 94       	cli
+
+000002cc <__stop_program>:
+ 2cc:	ff cf       	rjmp	.-2      	; 0x2cc <__stop_program>

@@ -4,6 +4,10 @@
 
 ADC.cpp
 
+DataToSendClasses\BaseDataClass.cpp
+
+DataToSendClasses\SingleClickDataToSend.cpp
+
 main.cpp
 
 UART.cpp

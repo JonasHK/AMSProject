@@ -32,12 +32,15 @@ LIB_DEP:=
 LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
-SUBDIRS := 
+SUBDIRS :=  \
+../DataToSendClasses
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../ADC.cpp \
+../DataToSendClasses/BaseDataClass.cpp \
+../DataToSendClasses/SingleClickDataToSend.cpp \
 ../main.cpp \
 ../UART.cpp
 
@@ -50,21 +53,29 @@ ASM_SRCS +=
 
 OBJS +=  \
 ADC.o \
+DataToSendClasses/BaseDataClass.o \
+DataToSendClasses/SingleClickDataToSend.o \
 main.o \
 UART.o
 
 OBJS_AS_ARGS +=  \
 ADC.o \
+DataToSendClasses/BaseDataClass.o \
+DataToSendClasses/SingleClickDataToSend.o \
 main.o \
 UART.o
 
 C_DEPS +=  \
 ADC.d \
+DataToSendClasses/BaseDataClass.d \
+DataToSendClasses/SingleClickDataToSend.d \
 main.d \
 UART.d
 
 C_DEPS_AS_ARGS +=  \
 ADC.d \
+DataToSendClasses/BaseDataClass.d \
+DataToSendClasses/SingleClickDataToSend.d \
 main.d \
 UART.d
 
@@ -83,6 +94,20 @@ LINKER_SCRIPT_DEP+=
 
 # AVR32/GNU C Compiler
 ./ADC.o: .././ADC.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.3.300\gcc\dev\atmega328p" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+DataToSendClasses/BaseDataClass.o: ../DataToSendClasses/BaseDataClass.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.3.300\gcc\dev\atmega328p" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+DataToSendClasses/SingleClickDataToSend.o: ../DataToSendClasses/SingleClickDataToSend.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.3.300\gcc\dev\atmega328p" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
