@@ -31,9 +31,10 @@ class stepperMotor
 	void update();
 	void rotateDegree(int16_t degrees);
 	void setReductionRatio(float gearRatio, int stepsPerRev);
+	void step(bool clockwice);
 	protected:
 	private:
-	void step(bool clockwice);
+	
 	
 	int stepperStepTargetPosition_;
 	int stepperStepPosition_;
@@ -45,6 +46,7 @@ class stepperMotor
 	float radToStepFactor_;
 	
 	pin* pins_[4];
+	unsigned char currentPin_;
 	bool pinStateMEM_[4]; //= {false,false,false,false};
 	bool pinStateTMP_[4]; // = {false,false,false,false};
 };

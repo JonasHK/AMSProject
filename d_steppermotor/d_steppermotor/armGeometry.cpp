@@ -42,9 +42,9 @@ float armGeometry::getHighRad() const{
 
 void armGeometry::calculateAng(){
 	//Top view radius
-	float RTop = sqrt(pow(xmm_,2)+pow(ymm_,2));
+	float RTop = sqrt((xmm_*xmm_)+(ymm_*ymm_));
 	//Side view radius from base to grapper
-	float RSide = sqrt(pow(RTop,2)+pow(zmm_,2));
+	float RSide = sqrt((RTop*RTop)+(zmm_*zmm_));
 	
 	//Angle of base stepper motor 
 	rot_ =asin(xmm_ / RTop);

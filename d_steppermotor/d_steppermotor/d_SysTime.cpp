@@ -37,7 +37,7 @@ void SysTime::Reset() {
 /**
 * Returns the number of Microseconds since start
 */
-uint32_t SysTime::Micro() { 
+long SysTime::Micro() { 
 	return (TCNT4 / 2) + ((ovfCount_ * sizeof(ovfCount_)) / 2);
 }
 SysTime sysTime;

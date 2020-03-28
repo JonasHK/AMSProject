@@ -13,6 +13,10 @@ stepperMotor::stepperMotor(pin** pinP){
 	}
 	
 	pins_[0]->high();
+	pins_[1]->low();
+	pins_[2]->low();
+	pins_[3]->low();
+	currentPin_ = 0;
 	pinStateMEM_[0] = true;
 	pinStateMEM_[1] = false;
 	pinStateMEM_[2] = false;
@@ -68,6 +72,7 @@ void stepperMotor::update() {
 		digitalWrite(stepPin, LOW);
 		delayMicroseconds(5);*/
 		stepperStepPosition_--;
+		_delay_ms(5);
 	}
 	while (stepperStepTargetPosition_ > stepperStepPosition_) {
 		step(false);
@@ -79,6 +84,7 @@ void stepperMotor::update() {
 		digitalWrite(stepPin, LOW);
 		delayMicroseconds(5);*/
 		stepperStepPosition_++;
+		_delay_ms(5);
 	}
 }
 
@@ -86,7 +92,13 @@ void stepperMotor::setReductionRatio(float gearRatio, int stepsPerRev) {
 	radToStepFactor_ = gearRatio * stepsPerRev / 2 / M_PI;
 };
 
-void stepperMotor::step(bool clockwice){
+void stepperMotor::step(bool clockwise){
+	unsigned char increment = clockwise ? 1 : -1;
+	uint8_t nextPin = (currentPin_ + increment) % 4;
+	pins_[currentPin_]->low();
+	pins_[nextPin]->high();
+	currentPin_ = nextPin;
+	/*
 	if (clockwice){
 		for (uint8_t i = 0;i<4;i++){
 			if (pinStateMEM_[i]==true){
@@ -130,6 +142,7 @@ void stepperMotor::step(bool clockwice){
 	pinStateMEM_[1]=pinStateTMP_[1];
 	pinStateMEM_[2]=pinStateTMP_[2];
 	pinStateMEM_[3]=pinStateTMP_[3];
+	*/
 }
 void stepperMotor::rotateDegree(int16_t degrees){
 	bool orientation = (degrees > 0 ? true : false);

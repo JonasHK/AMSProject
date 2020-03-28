@@ -15,7 +15,7 @@ class SysTime {
 	public:
 	SysTime();
 	void Overflow();
-	uint32_t Micro();
+	long Micro();
 	void Reset();
 };
 

@@ -6,6 +6,8 @@
  */ 
 #include "c_interpolation.h"
 #include "math.h"
+#include <stdio.h>
+#include "uart.h"
 
 
 Interpolation::Interpolation() {
@@ -97,16 +99,23 @@ void Interpolation::setInterpolation(Point p0, Point p1, float av) {
 	
 	state_ = 0; // Begin moving!
 	
-	startTime_ = timer_.Micro(); // Later inspection
+	startTime_ = timer_.Micro();
 }
 
 void Interpolation::updateActualPosition() {
   if (state_ != 0) { // Arm is not moving
     return;
   }
-    
-  long microsek = timer_.Micro();  // Time now
+  
+  unsigned long microsek = timer_.Micro();  // Time now
   float t = (microsek - startTime_) / 1000000.0;  // Time since moving started in sec.
+  
+  SendString(UART0,"\n\r startTime_, microsek: ");
+  SendInteger(UART0,startTime_);
+  SendString(UART0,",");
+  char b[100];
+  sprintf( b, "%lu", microsek );
+  SendString(UART0,b);
   
   //ArcTan Approx.
   /*float progress = atan((PI * t * tmul) - (PI * 0.5)) * 0.5 + 0.5;
@@ -114,16 +123,49 @@ void Interpolation::updateActualPosition() {
     progress = 1.0; 
     state = 1;
   }*/
-  
+  /* Testing t and tmul
+  SendString(UART0,"\n\r t*10000, tmul_*10000: ");
+  SendInteger(UART0,t*10000.0);
+  SendString(UART0,",");
+  SendInteger(UART0,tmul_*10000.0);
+  */
   //Cosin Approx.
   float progress = -cos(t * tmul_ * M_PI) * 0.5 + 0.5;
   if ((t * tmul_) >= 1.0) {	// Move is done!
     progress = 1.0; 
     state_ = 1;
+	SendString(UART0,"state_ = 1, altsaa faerdig!");
   }
-  
   xPosmm_ = xStartmm_ + progress * xDelta_;
   yPosmm_ = yStartmm_ + progress * yDelta_;
   zPosmm_ = zStartmm_ + progress * zDelta_;
   ePosmm_ = eStartmm_ + progress * eDelta_;
 }
+
+bool Interpolation::isFinished() const{
+	return state_ !=0;
+}
+
+float Interpolation::getXPosmm() const{
+	return xPosmm_;	
+}
+
+float Interpolation::getYPosmm() const{
+	return yPosmm_;	
+}
+float Interpolation::getZPosmm() const{
+	return zPosmm_;
+}
+
+float Interpolation::getEPosmm() const{
+	return ePosmm_;	
+};
+	
+Point Interpolation::getPosmm() const{
+	 Point p;
+	 p.xmm_ = xPosmm_;
+	 p.ymm_ = yPosmm_;
+	 p.zmm_ = zPosmm_;
+	 p.emm_ = ePosmm_;
+	 return p;
+};
