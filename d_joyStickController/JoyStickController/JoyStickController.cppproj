@@ -165,6 +165,18 @@
     <Compile Include="DataToSendClasses\BaseDataClass.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="DataToSendClasses\DoubleClickDataToSend.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DataToSendClasses\DoubleClickDataToSend.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DataToSendClasses\PositionDataToSend.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DataToSendClasses\PositionDataToSend.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="DataToSendClasses\SingleClickDataToSend.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -172,6 +184,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PositionTranslator.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PositionTranslator.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="UART.cpp">

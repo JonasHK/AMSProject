@@ -17,3 +17,8 @@ bool BaseDataClass::Continue()
 {
 	return true;
 }
+
+void BaseDataClass::GetData(char* string)
+{
+	
+}
