@@ -10,12 +10,13 @@
 class pin
 {
 	public:
-	pin(volatile uint8_t* DDRadr, volatile uint8_t* port, uint8_t pinno);
+	pin(volatile uint8_t* DDRadr, volatile uint8_t* port, uint8_t pinno, bool input);
 	void high();
 	void low();
+	bool readValue();
 	protected:
 	private:
-	bool state_ = 0;
+	bool state_;
 	volatile uint8_t* port_;
 	uint8_t pinno_;
 };
