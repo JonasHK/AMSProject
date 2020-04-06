@@ -23,11 +23,10 @@ bool PositionDataToSend::Continue()
 
 void PositionDataToSend::GetData(char* string)
 {
-	uint16_t xPos = voltageReader.Read(0);
-	uint16_t yPos = voltageReader.Read(1);
+	uint16_t xPos = voltageReader.Read(0);//ADC channel 0
+	uint16_t yPos = voltageReader.Read(1);//ADC channel 1
 	
 	PositionTranslator t;
 	
-	string[0] = t.Translate(xPos, yPos);
-	string[1] = '\0';
+	sprintf(string, "%d", t.Translate(xPos, yPos));
 }
