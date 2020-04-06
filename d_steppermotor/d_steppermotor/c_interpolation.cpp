@@ -162,7 +162,8 @@ float Interpolation::getEPosmm() const{
 };
 	
 Point Interpolation::getPosmm() const{
-	 Point p;
+	 
+	  p;
 	 p.xmm_ = xPosmm_;
 	 p.ymm_ = yPosmm_;
 	 p.zmm_ = zPosmm_;
