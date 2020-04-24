@@ -6,6 +6,7 @@
  */ 
 
 #include "d_steppermotor.h"
+#include "uart.h"
 
 stepperMotor::stepperMotor(pin* stepP, pin* dirP){
 	stepPinP_ = stepP;
@@ -73,9 +74,14 @@ void stepperMotor::update() {
 		_delay_us(1000);
 		stepPinP_->low();
 		_delay_us(1000);
+		//SendString(UART0,"target:");
+		//SendInteger(UART0,stepperStepTargetPosition_);
+		//SendString(UART0,"\n\rcurrentPos:");
+		//SendInteger(UART0,stepperStepPosition_);
+		stepperStepPosition_--;
 		/*
 		step(true);
-		stepperStepPosition_--;
+		
 		_delay_ms(5);*/
 	}
 	while (stepperStepTargetPosition_ > stepperStepPosition_) {
@@ -85,9 +91,14 @@ void stepperMotor::update() {
 		_delay_us(1000);
 		stepPinP_->low();
 		_delay_us(1000);
+		//SendString(UART0,"target:");
+		//SendInteger(UART0,stepperStepTargetPosition_);
+		//SendString(UART0,"\n\rcurrentPos:");
+		//SendInteger(UART0,stepperStepPosition_);
+		stepperStepPosition_++;
 		/*
 		step(false);
-		stepperStepPosition_++;
+		
 		_delay_ms(5);
 		*/
 	}

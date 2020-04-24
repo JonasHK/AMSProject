@@ -8,15 +8,21 @@
 
 #ifndef SYSTIME_H_
 #define SYSTIME_H_
-
+/*
+// Implemented with Singleton design pattern
 class SysTime {
 	private:
 	unsigned long ovfCount_;
-	public:
 	SysTime();
+	SysTime(SysTime const&);
+	void operator=(SysTime const&);
+	public:
+	static SysTime* getInstance();
 	void Overflow();
 	long Micro();
 	void Reset();
-};
+};*/
 
+long Micro();
+void initTimer();
 #endif /* SYSTIME_H_ */

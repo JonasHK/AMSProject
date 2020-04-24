@@ -130,3 +130,21 @@ char array[7];
 }
 
 /************************************************************************/
+
+char* WaitForString(unsigned int UART_adr){
+	static char bufferString[20];
+	int i = 0;
+	/*
+	while(true)
+	{
+		bufferString[i] = ReadChar(UART_adr);
+		if(bufferString[i] == 13)
+			break;
+			
+		i++;
+	}
+	*/
+	bufferString[1] = ReadChar(UART_adr);
+	SendChar(UART_adr, '\n');
+	return bufferString;
+}

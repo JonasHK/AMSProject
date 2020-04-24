@@ -14,6 +14,7 @@
 * Constructor, Initializes the System Timer for keeping track
 * of the time since start.
 */
+/*
 SysTime::SysTime() {
 	ovfCount_ = 0;
 	TCCR1B |= (1 << CS11); //Set Prescale to 8
@@ -21,26 +22,42 @@ SysTime::SysTime() {
 	//Enable Interrupts
 	sei();
 }
-/**
-* Increase the Overflow count
-*/
+
+SysTime* SysTime::getInstance(){
+	static SysTime instance_;
+	return &instance_;
+}
+
 void SysTime::Overflow() {
 	ovfCount_++;
 }
-/**
-* Resets the SystemTimer
-*/
+
 void SysTime::Reset() {
 	ovfCount_ = 0;
 	TCNT1 = 0;
 }
-/**
-* Returns the number of Microseconds since start
-*/
+
 long SysTime::Micro() { 
 	return (TCNT1 / 2) + ((ovfCount_ * sizeof(ovfCount_)) / 2);
 }
-SysTime sysTime;
 ISR(TIMER1_OVF_vect) {
-	sysTime.Overflow();
+	SysTime::getInstance()->Overflow();
+}
+*/
+
+unsigned long ovfCount = 0;
+void initTimer(){
+	TCCR1B |= (1 << CS11); //Set Prescale to 8
+	TIMSK1 |= (1 << TOIE1); //Enable the Overflow Interrupt
+	TCNT1 = 0;
+	//Enable Interrupts
+	sei();
+}
+
+long Micro() {
+	return (TCNT1 / 2) + ((ovfCount * 65534 ) / 2);
+}
+
+ISR(TIMER1_OVF_vect) {
+	ovfCount++;
 }

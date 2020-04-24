@@ -4,14 +4,7 @@
  * Created: 18/03/2020 17.36.55
  *  Author: jonas
  */ 
-#include "d_SysTime.h"
-
-struct Point {
-	float xmm_;
-	float ymm_;
-	float zmm_;
-	float emm_;
-};
+#include "Point.h"
 
 class Interpolation
 {
@@ -38,8 +31,7 @@ private:
 	float getDistance() const;
 	char state_;
   
-	long startTime_;
-	SysTime timer_;
+	unsigned long startTime_;
   
 	float xStartmm_;
 	float yStartmm_;
