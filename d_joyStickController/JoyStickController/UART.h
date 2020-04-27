@@ -17,7 +17,7 @@ public:
 	UART(uint32_t fcpu, uint32_t BAUDRATE);
 	uint8_t Write(const char* string);
 	char* WaitForReceive();
-	
+	void SendNewLine();
 private:
 	uint8_t sendChar(char c);
 	char getChar();

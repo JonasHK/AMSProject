@@ -61,3 +61,8 @@ char UART::getChar()
 	UDR0 = udr;
 	return (udr);
 }
+
+void UART::SendNewLine()
+{
+	sendChar(13);
+}

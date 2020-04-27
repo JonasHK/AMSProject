@@ -65,7 +65,7 @@ ISR(TIMER1_OVF_vect)
 
 int main(void)
 {
-	UART sender(16e6, 9600);
+	UART bluetooth(16e6, 9600);
 	EICRA |= 0b00000010; //Falling edge of PORTD pin 2
 	EIMSK |= 1; //Enable INT0 - PORTD pin 2	
 	
@@ -84,8 +84,8 @@ int main(void)
 		while(dataController->Continue())
 		{
 			dataController->GetData(buffer);
-			sender.Write(buffer);
-			sender.Write("\n");
+			bluetooth.Write(buffer);
+			bluetooth.SendNewLine();
 		}
     }
 }
