@@ -1,0 +1,58 @@
+#include <iostream>
+#include <math.h>
+
+#define PI 3.14159265
+
+struct Point {
+	float xmm_;
+	float ymm_;
+	float zmm_;
+	float emm_;
+};
+
+Point calcPoint(double x, double y, double v_ch)
+{
+  double hyp = sqrt(pow(x,2)+pow(y,2));
+  //std::cout<<"Hyp: "<<hyp<<std::endl;
+  double mod = x;
+  double hos = y;
+  //std::cout<<"x: "<<mod<<std::endl;
+  //std::cout<<"y: "<<hos<<std::endl;
+ 
+  double param = hos/hyp;
+  std::cout<<"param: "<<param<<std::endl;
+  double v_old = acos(param);
+  //result = acos (param) * 180.0 / PI;
+  //std::cout<<"v_old: "<<v_old<<std::endl;
+  double v_new = v_old + (v_ch/180.0)*PI;
+  //std::cout<<"v_new: "<<v_new<<std::endl;
+  Point newP;
+  newP.xmm_ = sin(v_new)*hyp;
+  newP.ymm_ = cos(v_new)*hyp;
+  std::cout<<"xmm_: "<<newP.xmm_<<std::endl;
+  std::cout<<"ymm_: "<<newP.ymm_<<std::endl;
+  std::cout<<"hyp: "<<sqrt(pow(x,2)+pow(y,2))<<std::endl;
+  return newP;
+}
+
+int main() {
+  std::cout << "Hello World!\n";
+  double x_old = 0.0;
+  double y_old = 120.0;
+  
+  int v_change = 1; //One degree change
+  Point p_new;
+
+  for(int i=1;i<180;i++)
+  {
+      std::cout<<"Round: "<<i<<std::endl;
+    p_new = calcPoint(x_old, y_old, v_change);
+    x_old = p_new.xmm_;
+    y_old = p_new.ymm_;
+
+  }
+  //p_new.zmm_=0;
+  //p_new.emm_=0;
+
+  //printPoint(p_new);
+}
