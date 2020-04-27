@@ -6,11 +6,11 @@
 */
 
 
-
-#ifndef __BLUETOOTHCOMMUNICATOR_H__
-#define __BLUETOOTHCOMMUNICATOR_H__
 #include "uart.h"
 #include "Point.h"
+#ifndef __BLUETOOTHCOMMUNICATOR_H__
+#define __BLUETOOTHCOMMUNICATOR_H__
+
 
 
 class BluetoothCommunicator

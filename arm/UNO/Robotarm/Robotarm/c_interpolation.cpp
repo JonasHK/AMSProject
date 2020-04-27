@@ -12,6 +12,7 @@
 
 
 Interpolation::Interpolation() {
+	
 }
 
 void Interpolation::setCurrentPos(float px, float py, float pz, float pe) {

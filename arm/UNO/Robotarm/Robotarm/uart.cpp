@@ -101,7 +101,7 @@ Sends 0 terminated string.
 Parameter:
    Streng: Pointer to the string. 
 *************************************************************************/
-void SendString(unsigned int UART_adr, char* Streng)
+void SendString(unsigned int UART_adr, const char* Streng)
 {
   // Repeat until zero-termination
   while (*Streng != 0)
@@ -134,7 +134,7 @@ char array[7];
 char* WaitForString(unsigned int UART_adr){
 	static char bufferString[20];
 	int i = 0;
-	/*
+	
 	while(true)
 	{
 		bufferString[i] = ReadChar(UART_adr);
@@ -143,7 +143,7 @@ char* WaitForString(unsigned int UART_adr){
 			
 		i++;
 	}
-	*/
+	
 	bufferString[1] = ReadChar(UART_adr);
 	SendChar(UART_adr, '\n');
 	return bufferString;

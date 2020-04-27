@@ -16,6 +16,7 @@
 #include "c_interpolation.h"
 #include "d_SysTime.h"
 #include "BluetoothCommunicator.h"
+#include "Point.h"
 
 void printPoint(Point p1)
 {

@@ -16,8 +16,10 @@ main.d main.o: .././main.cpp \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
- .././d_steppermotor.h .././d_pin.h .././uart.h .././d_SysTime.h \
- .././armGeometry.h .././c_interpolation.h
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
+ .././d_steppermotor.h .././d_pin.h .././uart.h .././armGeometry.h \
+ .././c_interpolation.h .././Point.h .././d_SysTime.h \
+ .././BluetoothCommunicator.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -53,14 +55,20 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
 
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
+
 .././d_steppermotor.h:
 
 .././d_pin.h:
 
 .././uart.h:
 
-.././d_SysTime.h:
-
 .././armGeometry.h:
 
 .././c_interpolation.h:
+
+.././Point.h:
+
+.././d_SysTime.h:
+
+.././BluetoothCommunicator.h:

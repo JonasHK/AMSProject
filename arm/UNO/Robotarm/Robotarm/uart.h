@@ -16,7 +16,7 @@ void InitUART(unsigned int UART_adr, unsigned long BaudRate, unsigned char DataB
 unsigned char CharReady(unsigned int UART_adr);
 char ReadChar(unsigned int UART_adr);
 void SendChar(unsigned int UART_adr, char Tegn);
-void SendString(unsigned int UART_adr, char* Streng);
+void SendString(unsigned int UART_adr, const char* Streng);
 void SendInteger(unsigned int UART_adr, int Tal);
 char* WaitForString(unsigned int UART_adr);
 /****************************************/

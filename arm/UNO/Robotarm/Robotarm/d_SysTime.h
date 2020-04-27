@@ -6,8 +6,6 @@
  */ 
 #include <stdint.h>
 
-#ifndef SYSTIME_H_
-#define SYSTIME_H_
 /*
 // Implemented with Singleton design pattern
 class SysTime {
@@ -22,7 +20,6 @@ class SysTime {
 	long Micro();
 	void Reset();
 };*/
-
+#pragma once
 long Micro();
 void initTimer();
-#endif /* SYSTIME_H_ */
