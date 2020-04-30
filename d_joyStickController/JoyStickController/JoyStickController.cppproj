@@ -192,10 +192,10 @@
     <Compile Include="PositionTranslator.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="UART.cpp">
+    <Compile Include="uart.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="UART.h">
+    <Compile Include="uart.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

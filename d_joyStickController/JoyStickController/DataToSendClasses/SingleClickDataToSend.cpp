@@ -21,6 +21,5 @@ bool SingleClickDataToSend::Continue()
 }
 void SingleClickDataToSend::GetData(char* string)
 {
-	string[0] = '9';
-	string[1] = '\0';
+	strcpy(string, "9");
 }

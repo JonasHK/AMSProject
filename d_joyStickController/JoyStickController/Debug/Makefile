@@ -45,7 +45,7 @@ C_SRCS +=  \
 ../DataToSendClasses/SingleClickDataToSend.cpp \
 ../main.cpp \
 ../PositionTranslator.cpp \
-../UART.cpp
+../uart.cpp
 
 
 PREPROCESSING_SRCS += 
@@ -62,7 +62,7 @@ DataToSendClasses/PositionDataToSend.o \
 DataToSendClasses/SingleClickDataToSend.o \
 main.o \
 PositionTranslator.o \
-UART.o
+uart.o
 
 OBJS_AS_ARGS +=  \
 ADC.o \
@@ -72,7 +72,7 @@ DataToSendClasses/PositionDataToSend.o \
 DataToSendClasses/SingleClickDataToSend.o \
 main.o \
 PositionTranslator.o \
-UART.o
+uart.o
 
 C_DEPS +=  \
 ADC.d \
@@ -82,7 +82,7 @@ DataToSendClasses/PositionDataToSend.d \
 DataToSendClasses/SingleClickDataToSend.d \
 main.d \
 PositionTranslator.d \
-UART.d
+uart.d
 
 C_DEPS_AS_ARGS +=  \
 ADC.d \
@@ -92,7 +92,7 @@ DataToSendClasses/PositionDataToSend.d \
 DataToSendClasses/SingleClickDataToSend.d \
 main.d \
 PositionTranslator.d \
-UART.d
+uart.d
 
 OUTPUT_FILE_PATH +=JoyStickController.elf
 
@@ -157,7 +157,7 @@ DataToSendClasses/SingleClickDataToSend.o: ../DataToSendClasses/SingleClickDataT
 	@echo Finished building: $<
 	
 
-./UART.o: .././UART.cpp
+./uart.o: .././uart.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATmega_DFP\1.3.300\gcc\dev\atmega328p" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

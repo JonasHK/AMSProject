@@ -17,7 +17,7 @@ main.d main.o: .././main.cpp \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
- .././UART.h .././ADC.h .././DataToSendClasses/BaseDataClass.h \
+ .././uart.h .././ADC.h .././DataToSendClasses/BaseDataClass.h \
  .././DataToSendClasses/DoubleClickDataToSend.h \
  .././DataToSendClasses/BaseDataClass.h \
  .././DataToSendClasses/SingleClickDataToSend.h \
@@ -60,7 +60,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
 
-.././UART.h:
+.././uart.h:
 
 .././ADC.h:
 
