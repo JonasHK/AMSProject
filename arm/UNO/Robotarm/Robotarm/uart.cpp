@@ -57,6 +57,7 @@ void InitUART(unsigned int UART_adr, unsigned long BaudRate, unsigned char DataB
     // Adding (8*Baudrate) ensures correct rounding (up/down)
     UBRRn = (XTAL+(8*BaudRate))/(16*BaudRate) - 1;
   }  
+
 }
 
 /*************************************************************************

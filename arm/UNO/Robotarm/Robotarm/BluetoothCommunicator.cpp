@@ -23,62 +23,54 @@ Point BluetoothCommunicator::ReadData(Point oldTargetPoint)
 {
 	Point toReturn = {0,0,0,0};
 	SendString(UART0,"ReadData\n\r");
-	char buf[2] = {ReadChar(UART0)};
-	int data = atoi(buf);
-	SendString(UART0,"\n\r");
-	SendInteger(UART0,data);
+	char data = {ReadChar(UART0)};
+	int hyp_factor = 1;
+	int a_factor = 1;
 	switch(data)
 	{
-		case 100://left-backwards - NOT HANDLED
-			toReturn.xmm_ = 1;
-			toReturn.ymm_ = -1;
+		case '0'://left-backwards
+			return calcPoint(oldTargetPoint,1*a_factor,-1*hyp_factor);
 			break;
-		case 1://left
-			return calcPoint(oldTargetPoint,1);
+		case '1'://left
+			return calcPoint(oldTargetPoint,1*a_factor,0*hyp_factor);
 			break;
-		case 2://left-forward - NOT HANDLED
-			toReturn.xmm_ = 1;
-			toReturn.ymm_ = 1;
+		case '2'://left-forward
+			return calcPoint(oldTargetPoint,1*a_factor,1*hyp_factor);
 			break;
-		case 3://backwards
-			toReturn.ymm_ = -1;
+		case '3'://backwards
+			return calcPoint(oldTargetPoint,0*a_factor,-1*hyp_factor);
 			break;
-		case 4://stay still
+		case '4'://stay still
 			toReturn.xmm_ = 0;
 			toReturn.ymm_ = 0;
 			toReturn.zmm_ = 0;
 			break;
-		case 5://forward
-			toReturn.ymm_ = 1;
+		case '5'://forward
+			return calcPoint(oldTargetPoint,0*a_factor,1*hyp_factor);
 			break;
-		case 6://right-backwards - NOT HANDLED
-			toReturn.xmm_ = -1;
-			toReturn.ymm_ = -1;
+		case '6'://right-backwards
+			return calcPoint(oldTargetPoint,-1*a_factor,-1*hyp_factor);
 			break;
-		case 7://right
-			return calcPoint(oldTargetPoint,-1);
+		case '7'://right
+			return calcPoint(oldTargetPoint,-1*a_factor,0*hyp_factor);
 			break;
-		case 8: //right-forward - NOT HANDLED
-			toReturn.xmm_ = -1;
-			toReturn.ymm_ = 1;
+		case '8': //right-forward
+			return calcPoint(oldTargetPoint,-1*a_factor,1*hyp_factor);
 			break;
-		case 9: //up
+		case '9': //up
 			toReturn.zmm_ = 1;
 			break;
-		case 10: //down
+		case 'A': //down
 			toReturn.zmm_ = -1;
 			break;
 		default:
-			toReturn.emm_ = 0;
 			toReturn.zmm_ = 0;
-			toReturn.ymm_ = 0;
-			toReturn.xmm_ = 0;
 			break;
 			
 	}
-	toReturn.emm_ *= 40;
-	toReturn.zmm_ *= 40;
-	toReturn.ymm_ *= 40;
-	toReturn.xmm_ *= 40;
+	toReturn.emm_ *= 1;
+	toReturn.zmm_ *= 1;
+	toReturn.ymm_ *= 1;
+	toReturn.xmm_ *= 1;
 	return addPoints(toReturn,oldTargetPoint);
 }

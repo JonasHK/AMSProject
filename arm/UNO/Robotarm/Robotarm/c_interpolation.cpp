@@ -75,8 +75,8 @@ void Interpolation::setInterpolation(Point p0, Point p1, float av) {
 	float c = (p1.zmm_ - p0.zmm_);
 	float e = fabs(p1.emm_ - p0.emm_);
 	float dist = sqrt(a*a + b*b + c*c);
-	SendInteger(UART0,dist);
-	SendString(UART0,"\n\r");
+	//SendInteger(UART0,dist);
+	//SendString(UART0,"\n\r");
 	
 	
 	if (v_ < 1) { //includes 0 = default value
@@ -88,8 +88,8 @@ void Interpolation::setInterpolation(Point p0, Point p1, float av) {
 	}
 	
 	tmul_ = v_ / dist;
-	SendInteger(UART0,tmul_*100000);
-	SendString(UART0,"\n\r");	
+	//SendInteger(UART0,tmul_*100000);
+	//SendString(UART0,"\n\r");	
 	xStartmm_ = p0.xmm_;
 	yStartmm_ = p0.ymm_;
 	zStartmm_ = p0.zmm_;
@@ -124,7 +124,8 @@ void Interpolation::updateActualPosition() {
     state = 1;
   }*/
   //Cosin Approx.
-  float progress = -cos(t * tmul_ * M_PI) * 0.5 + 0.5;
+  //float progress = -cos(t * tmul_ * M_PI) * 0.5 + 0.5;
+  float progress = t * tmul_;
   //SendInteger(UART0,t*1000);
   //SendString(UART0,"\n\r");
   if ((t * tmul_) >= 1.0) {	// Move is done!

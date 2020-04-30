@@ -17,7 +17,7 @@ struct Point {
 	float emm_;
 };
 
-Point calcPoint(Point oldP, double v_ch);
+Point calcPoint(Point oldP, double a_ch, double hyp_ch);
 
 Point addPoints(Point p1, Point p2);
 #endif /* POINT_H_ */
