@@ -67,10 +67,6 @@ int main(void)
 	//interpolator.setInterpolation(0,120,120,0, 0,120,120,0);
 	Point targetPoint = {0,120,120,0};
 	
-	
-	//Init test environment
-	pin ptest(&DDRC,&PINC,5,true);
-	int nPushed = 0;
 	BluetoothCommunicator btCom;
 	//Loop
 	int twice = 0;
@@ -91,6 +87,7 @@ int main(void)
 		
 		if (interpolator.isFinished())
 		{
+			SendString(UART0,"IsFinnished()\n\r");
 			targetPoint = btCom.ReadData(targetPoint);
 			printPoint(targetPoint);
 			interpolator.setInterpolation(targetPoint,10);

@@ -12,7 +12,7 @@
 
 
 Interpolation::Interpolation() {
-	
+	state_ = 1;
 }
 
 void Interpolation::setCurrentPos(float px, float py, float pz, float pe) {
@@ -77,13 +77,12 @@ void Interpolation::setInterpolation(Point p0, Point p1, float av) {
 	float dist = sqrt(a*a + b*b + c*c);
 	SendInteger(UART0,dist);
 	SendString(UART0,"\n\r");
-	if (dist < e) {
-		dist = e;
-	}
+	
 	
 	if (v_ < 1) { //includes 0 = default value
 		v_ = sqrt(dist) * 10; //set a good value for v
 	}
+	
 	if (v_ < 1) {
 		v_ = 5;
 	}

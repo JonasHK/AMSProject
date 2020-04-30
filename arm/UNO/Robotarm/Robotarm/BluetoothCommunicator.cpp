@@ -22,17 +22,21 @@ bool BluetoothCommunicator::Connected()
 Point BluetoothCommunicator::ReadData(Point oldTargetPoint)
 {
 	Point toReturn = {0,0,0,0};
-	int data = atoi(WaitForString(UART0));
+	SendString(UART0,"ReadData\n\r");
+	char buf[2] = {ReadChar(UART0)};
+	int data = atoi(buf);
+	SendString(UART0,"\n\r");
+	SendInteger(UART0,data);
 	switch(data)
 	{
-		case 100://left-backwards
+		case 100://left-backwards - NOT HANDLED
 			toReturn.xmm_ = 1;
 			toReturn.ymm_ = -1;
 			break;
 		case 1://left
-			toReturn.xmm_ = 1;
+			return calcPoint(oldTargetPoint,1);
 			break;
-		case 2://left-forward
+		case 2://left-forward - NOT HANDLED
 			toReturn.xmm_ = 1;
 			toReturn.ymm_ = 1;
 			break;
@@ -47,14 +51,14 @@ Point BluetoothCommunicator::ReadData(Point oldTargetPoint)
 		case 5://forward
 			toReturn.ymm_ = 1;
 			break;
-		case 6://right-backwards
+		case 6://right-backwards - NOT HANDLED
 			toReturn.xmm_ = -1;
 			toReturn.ymm_ = -1;
 			break;
 		case 7://right
-			toReturn.xmm_ = -1;
+			return calcPoint(oldTargetPoint,-1);
 			break;
-		case 8: //right-forward
+		case 8: //right-forward - NOT HANDLED
 			toReturn.xmm_ = -1;
 			toReturn.ymm_ = 1;
 			break;
@@ -72,16 +76,9 @@ Point BluetoothCommunicator::ReadData(Point oldTargetPoint)
 			break;
 			
 	}
-	if (data<=2||(data>=6 && data<=8))
-	{
-	  return calcPoint(oldTargetPoint,1);
-	}
-	else
-	{
-		toReturn.emm_ *= 40;
-		toReturn.zmm_ *= 40;
-		toReturn.ymm_ *= 40;
-		toReturn.xmm_ *= 40;
-		return addPoints(toReturn,oldTargetPoint);
-	}
+	toReturn.emm_ *= 40;
+	toReturn.zmm_ *= 40;
+	toReturn.ymm_ *= 40;
+	toReturn.xmm_ *= 40;
+	return addPoints(toReturn,oldTargetPoint);
 }
