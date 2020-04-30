@@ -90,7 +90,7 @@ int main(void)
 			SendString(UART0,"IsFinnished()\n\r");
 			targetPoint = btCom.ReadData(targetPoint);
 			printPoint(targetPoint);
-			interpolator.setInterpolation(targetPoint,10);
+			interpolator.setInterpolation(targetPoint,20);
 		}
 
 		

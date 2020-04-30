@@ -7,44 +7,44 @@
 
 #include "Point.h"
 
-Point calcPoint(Point oldP, double v_ch)
+Point calcPoint(Point oldP, double a_ch, double hyp_ch)
 {
-	double hyp = sqrt(pow(oldP.xmm_,2)+pow(oldP.ymm_,2));
-	double param = (oldP.ymm_/hyp);
-	double v_old = 0;
+	double hyp_old = sqrt(pow(oldP.xmm_,2)+pow(oldP.ymm_,2));
+	double param = (oldP.ymm_/hyp_old);
+	double a_old = 0;
 	if((oldP.xmm_>0 && oldP.ymm_>0) || (oldP.xmm_>0 && oldP.ymm_<0)) // 1. quadrant or 2. quadrant
 	{
-		v_old = acos(param);
+		a_old = acos(param);
 	}
 
 	if((oldP.xmm_<0 && oldP.ymm_<0) || (oldP.xmm_<0 && oldP.ymm_>0)) // 3. quadrant or 4. quadrant
 	{
-		v_old = -acos(param)+2.0*PI;
+		a_old = -acos(param)+2.0*PI;
 
 	}
 	// Cases with x or y equals zero
 	if(oldP.xmm_==0 && oldP.ymm_>0)
 	{
-		v_old = 0; //Radians
+		a_old = 0; //Radians
 	}
 	if(oldP.xmm_==0 && oldP.ymm_<0)
 	{
-		v_old = PI; //Radians
+		a_old = PI; //Radians
 	}
 	if(oldP.xmm_>0 && oldP.ymm_==0)
 	{
-		v_old = PI/2; //Radians
+		a_old = PI/2; //Radians
 	}
 	if(oldP.xmm_<0 && oldP.ymm_==0)
 	{
-		v_old = 3.0*PI/2.0; //Radians
+		a_old = 3.0*PI/2.0; //Radians
 	}
-	double v_new = v_old + (((v_ch)/180.0))*PI;
+	double a_new = a_old + (((a_ch)/180.0))*PI;
 	
 
 	Point result;
-	result.xmm_ = sin(v_new)*hyp;
-	result.ymm_ = cos(v_new)*hyp;
+	result.xmm_ = sin(a_new)*(hyp_old + hyp_ch);
+	result.ymm_ = cos(a_new)*(hyp_old + hyp_ch);
 	result.zmm_ = oldP.zmm_;
 	result.emm_ = oldP.emm_;
 	return result;
