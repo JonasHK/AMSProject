@@ -71,9 +71,9 @@ void stepperMotor::update() {
 		dirPinP_->high();
 		_delay_us(5);
 		stepPinP_->high();
-		_delay_us(500);
+		_delay_us(250);
 		stepPinP_->low();
-		_delay_us(500);
+		_delay_us(250);
 		//SendString(UART0,"target:");
 		//SendInteger(UART0,stepperStepTargetPosition_);
 		//SendString(UART0,"\n\rcurrentPos:");

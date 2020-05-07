@@ -51,9 +51,9 @@ int main(void)
 	armGeometry geometry;
 	Interpolation interpolator;
 	
-	stepperHigh.setReductionRatio(32.0 / 9.0, 200);  //big gear: 32, small gear: 9, steps per rev: 200,
-	stepperLow.setReductionRatio( 32.0 / 9.0, 200);
-	stepperBase.setReductionRatio(32.0 / 9.0, 200);
+	stepperHigh.setReductionRatio(32.0 / 9.0, 200*8);  //big gear: 32, small gear: 9, steps per rev: 200*8 - 1/8th step
+	stepperLow.setReductionRatio( 32.0 / 9.0, 200*8);
+	stepperBase.setReductionRatio(32.0 / 9.0, 200*8);
 	
 	//start positions..
 	stepperHigh.setPositionRad(M_PI / 2.0); //90°
