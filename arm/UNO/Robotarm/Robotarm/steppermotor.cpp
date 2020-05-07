@@ -11,21 +11,6 @@
 stepperMotor::stepperMotor(pin* stepP, pin* dirP){
 	stepPinP_ = stepP;
 	dirPinP_ = dirP;
-	
-	/*for (uint8_t i = 0; i<2;i++){
-		pins_[i] = pinP[i];
-	}
-	
-	pins_[0]->high();
-	pins_[1]->low();
-	pins_[2]->low();
-	pins_[3]->low();
-	currentPin_ = 0;
-	pinStateMEM_[0] = true;
-	pinStateMEM_[1] = false;
-	pinStateMEM_[2] = false;
-	pinStateMEM_[3] = false;
-	*/
 }
 
 bool stepperMotor::isOnPosition() const {
@@ -74,15 +59,8 @@ void stepperMotor::update() {
 		_delay_us(250);
 		stepPinP_->low();
 		_delay_us(250);
-		//SendString(UART0,"target:");
-		//SendInteger(UART0,stepperStepTargetPosition_);
-		//SendString(UART0,"\n\rcurrentPos:");
-		//SendInteger(UART0,stepperStepPosition_);
 		stepperStepPosition_--;
-		/*
-		step(true);
-		
-		_delay_ms(5);*/
+
 	}
 	while (stepperStepTargetPosition_ > stepperStepPosition_) {
 		dirPinP_->low();
@@ -91,16 +69,7 @@ void stepperMotor::update() {
 		_delay_us(500);
 		stepPinP_->low();
 		_delay_us(500);
-		//SendString(UART0,"target:");
-		//SendInteger(UART0,stepperStepTargetPosition_);
-		//SendString(UART0,"\n\rcurrentPos:");
-		//SendInteger(UART0,stepperStepPosition_);
 		stepperStepPosition_++;
-		/*
-		step(false);
-		
-		_delay_ms(5);
-		*/
 	}
 }
 
