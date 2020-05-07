@@ -4,7 +4,7 @@
  * Created: 27/02/2020 11.48.29
  *  Author: jonas
  */ 
-#include "d_pin.h"
+#include "pin.h"
 
 pin::pin(volatile uint8_t* DDRadr, volatile uint8_t* port, uint8_t pinno, bool input){
 	if (input==false)

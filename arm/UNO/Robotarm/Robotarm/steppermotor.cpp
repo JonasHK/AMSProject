@@ -5,7 +5,7 @@
  *  Author: jonas
  */ 
 
-#include "d_steppermotor.h"
+#include "steppermotor.h"
 #include "uart.h"
 
 stepperMotor::stepperMotor(pin* stepP, pin* dirP){
@@ -71,9 +71,9 @@ void stepperMotor::update() {
 		dirPinP_->high();
 		_delay_us(5);
 		stepPinP_->high();
-		_delay_us(1000);
+		_delay_us(500);
 		stepPinP_->low();
-		_delay_us(1000);
+		_delay_us(500);
 		//SendString(UART0,"target:");
 		//SendInteger(UART0,stepperStepTargetPosition_);
 		//SendString(UART0,"\n\rcurrentPos:");
@@ -88,9 +88,9 @@ void stepperMotor::update() {
 		dirPinP_->low();
 		_delay_us(5);
 		stepPinP_->high();
-		_delay_us(1000);
+		_delay_us(500);
 		stepPinP_->low();
-		_delay_us(1000);
+		_delay_us(500);
 		//SendString(UART0,"target:");
 		//SendInteger(UART0,stepperStepTargetPosition_);
 		//SendString(UART0,"\n\rcurrentPos:");
@@ -160,6 +160,7 @@ void stepperMotor::step(bool clockwise){
 	pinStateMEM_[3]=pinStateTMP_[3];
 	*/
 }
+/*
 void stepperMotor::rotateDegree(int16_t degrees){
 	bool orientation = (degrees > 0 ? true : false);
 	for (int16_t stepCount = fabs(degrees)*steps_pr_Degree;stepCount!=0;stepCount--){
@@ -167,3 +168,4 @@ void stepperMotor::rotateDegree(int16_t degrees){
 		_delay_ms(300);	
 	}
 }
+*/

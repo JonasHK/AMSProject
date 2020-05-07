@@ -39,11 +39,18 @@ SUBDIRS :=
 C_SRCS +=  \
 ../armGeometry.cpp \
 ../BluetoothCommunicator.cpp \
+<<<<<<< HEAD
 ../c_interpolation.cpp \
 ../c_robotarm.cpp \
 ../d_pin.cpp \
 ../d_steppermotor.cpp \
 ../d_SysTime.cpp \
+=======
+../interpolation.cpp \
+../pin.cpp \
+../steppermotor.cpp \
+../SysTime.cpp \
+>>>>>>> 95068a418e5dc75d1bc35423b9a3ad04d8fd4446
 ../main.cpp \
 ../Point.cpp \
 ../uart.cpp
@@ -58,11 +65,18 @@ ASM_SRCS +=
 OBJS +=  \
 armGeometry.o \
 BluetoothCommunicator.o \
+<<<<<<< HEAD
 c_interpolation.o \
 c_robotarm.o \
 d_pin.o \
 d_steppermotor.o \
 d_SysTime.o \
+=======
+interpolation.o \
+pin.o \
+steppermotor.o \
+SysTime.o \
+>>>>>>> 95068a418e5dc75d1bc35423b9a3ad04d8fd4446
 main.o \
 Point.o \
 uart.o
@@ -70,11 +84,18 @@ uart.o
 OBJS_AS_ARGS +=  \
 armGeometry.o \
 BluetoothCommunicator.o \
+<<<<<<< HEAD
 c_interpolation.o \
 c_robotarm.o \
 d_pin.o \
 d_steppermotor.o \
 d_SysTime.o \
+=======
+interpolation.o \
+pin.o \
+steppermotor.o \
+SysTime.o \
+>>>>>>> 95068a418e5dc75d1bc35423b9a3ad04d8fd4446
 main.o \
 Point.o \
 uart.o
@@ -82,11 +103,18 @@ uart.o
 C_DEPS +=  \
 armGeometry.d \
 BluetoothCommunicator.d \
+<<<<<<< HEAD
 c_interpolation.d \
 c_robotarm.d \
 d_pin.d \
 d_steppermotor.d \
 d_SysTime.d \
+=======
+interpolation.d \
+pin.d \
+steppermotor.d \
+SysTime.d \
+>>>>>>> 95068a418e5dc75d1bc35423b9a3ad04d8fd4446
 main.d \
 Point.d \
 uart.d
@@ -94,11 +122,18 @@ uart.d
 C_DEPS_AS_ARGS +=  \
 armGeometry.d \
 BluetoothCommunicator.d \
+<<<<<<< HEAD
 c_interpolation.d \
 c_robotarm.d \
 d_pin.d \
 d_steppermotor.d \
 d_SysTime.d \
+=======
+interpolation.d \
+pin.d \
+steppermotor.d \
+SysTime.d \
+>>>>>>> 95068a418e5dc75d1bc35423b9a3ad04d8fd4446
 main.d \
 Point.d \
 uart.d
@@ -131,27 +166,40 @@ LINKER_SCRIPT_DEP+=
 	@echo Finished building: $<
 	
 
+<<<<<<< HEAD
 ./c_interpolation.o: .././c_interpolation.cpp
+=======
+./interpolation.o: .././interpolation.cpp
+>>>>>>> 95068a418e5dc75d1bc35423b9a3ad04d8fd4446
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega328p" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
+<<<<<<< HEAD
 ./c_robotarm.o: .././c_robotarm.cpp
+=======
+./pin.o: .././pin.cpp
+>>>>>>> 95068a418e5dc75d1bc35423b9a3ad04d8fd4446
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega328p" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
+<<<<<<< HEAD
 ./d_pin.o: .././d_pin.cpp
+=======
+./steppermotor.o: .././steppermotor.cpp
+>>>>>>> 95068a418e5dc75d1bc35423b9a3ad04d8fd4446
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega328p" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
+<<<<<<< HEAD
 ./d_steppermotor.o: .././d_steppermotor.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
@@ -160,6 +208,9 @@ LINKER_SCRIPT_DEP+=
 	
 
 ./d_SysTime.o: .././d_SysTime.cpp
+=======
+./SysTime.o: .././SysTime.cpp
+>>>>>>> 95068a418e5dc75d1bc35423b9a3ad04d8fd4446
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega328p" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

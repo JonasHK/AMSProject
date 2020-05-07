@@ -8,8 +8,7 @@
 #include <math.h>
 #define F_CPU 16000000
 #include <util/delay.h>
-#include "d_pin.h"
-#define steps_pr_Degree 11
+#include "pin.h"
 
 
 class stepperMotor

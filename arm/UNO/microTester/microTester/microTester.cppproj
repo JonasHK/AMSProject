@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>Robotarm</AssemblyName>
-    <Name>Robotarm</Name>
-    <RootNamespace>Robotarm</RootNamespace>
+    <AssemblyName>microTester</AssemblyName>
+    <Name>microTester</Name>
+    <RootNamespace>microTester</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -29,14 +29,14 @@
     <eraseonlaunchrule>0</eraseonlaunchrule>
     <EraseKey />
     <AsfFrameworkConfig>
-      <framework-data>
+      <framework-data xmlns="">
         <options />
         <configurations />
         <files />
         <documentation help="" />
         <offline-documentation help="" />
         <dependencies>
-          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.39.0" />
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.47.0" />
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
@@ -153,49 +153,13 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="armGeometry.cpp">
+    <Compile Include="d_SysTime.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="armGeometry.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="BluetoothCommunicator.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="BluetoothCommunicator.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="interpolation.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="interpolation.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="pin.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="pin.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="steppermotor.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="steppermotor.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="SysTime.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="SysTime.h">
+    <Compile Include="d_SysTime.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Point.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Point.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="uart.cpp">
