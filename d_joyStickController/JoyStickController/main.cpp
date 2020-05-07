@@ -16,7 +16,7 @@
 
 //Timer 1 control
 #define TIMER1_HIGH_VALUE 0b00001011
-#define TIMER1_LOW_VALUE  0b11011100 //15540 in total, 250 ms 
+#define TIMER1_LOW_VALUE  0b11011100 //15540 in total, 250 ms to overflow
 
 //Data classes for switching
 BaseDataClass *dataController;
@@ -35,10 +35,9 @@ void resetTimer1()
 bool doubleClickFlag = false;//Flag used for double click timing, not an indicator of double click
 ISR(INT0_vect)
 {
-	if(doubleClickFlag)
+	if(doubleClickFlag) 
 	{
 		//Timer interrupted, double click
-		
 		TCCR1B &= 0b11111000; //Stop timer
 		resetTimer1();
 		doubleClickFlag = false;
@@ -48,7 +47,7 @@ ISR(INT0_vect)
 	{
 		//Start the timer to wait for double click
 		doubleClickFlag = true;
-		TCCR1B = (1<<CS10) | (1<<CS11);;  // Timer mode with 64 prescler
+		TCCR1B = (1<<CS10) | (1<<CS11);;  // Timer mode with 64 prescaler
 	}
 }
 
@@ -69,25 +68,26 @@ int main(void)
 	EICRA |= 0b00000010; //Falling edge of PORTD pin 2
 	EIMSK |= 1; //Enable INT0 - PORTD pin 2	
 	
-	
+	DDRD = 0;
 	DDRD = (0x01 << 4);
 	resetTimer1();
 
 	TCCR1A = 0x00;
 	TIMSK1 = (1 << TOIE1) ;   // Enable timer1 overflow interrupt(TOIE1)
 	sei();        // Enable global interrupts by setting global interrupt enable bit in SREG
+
 	
 	char buffer[20];
-    while (1) 
-    {
+	while (1)
+	{
 		dataController = &postionClass;
 		while(dataController->Continue())
 		{
 			dataController->GetData(buffer);
 			SendString(UART0, buffer);
-			SendString(UART0, "\n");
+			_delay_ms(50);
 		}
-    }
+	}
 	
 	
 	

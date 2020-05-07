@@ -24,8 +24,8 @@ Point BluetoothCommunicator::ReadData(Point oldTargetPoint)
 	Point toReturn = {0,0,0,0};
 	SendString(UART0,"ReadData\n\r");
 	char data = {ReadChar(UART0)};
-	int hyp_factor = 1;
-	int a_factor = 1;
+	int hyp_factor = 2;
+	int a_factor = 3;
 	switch(data)
 	{
 		case '0'://left-backwards
