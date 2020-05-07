@@ -18,9 +18,7 @@ DoubleClickDataToSend::DoubleClickDataToSend()
 
 void DoubleClickDataToSend::GetData(char* string)
 {
-	string[0] = '1';
-	string[1] = '0';
-	string[2] = '\0';
+	strcpy(string, "A");
 }
 
 bool DoubleClickDataToSend::Continue()

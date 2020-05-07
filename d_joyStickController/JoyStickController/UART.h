@@ -1,29 +1,22 @@
-/*
- * UART.h
- *
- * Created: 30-11-2019 10:02:46
- *  Author:
- */ 
+/****************************************
+* "uart.h":                             *
+* Header file for Mega2560 UART driver. *
+* Using UART0, UART1, UART2 or UART3    *
+*                                       *
+* Henning Hargaard, 2/4 2019            *
+*****************************************/
 
+// Memory mapping the base address of the UART registers
+#define UART0 0xC0
+#define UART1 0xC8
+#define UART2 0xD0
+#define UART3 0x130
 
-#ifndef UART_H_
-#define UART_H_
-#include <avr/interrupt.h>
-
-
-class UART
-{
-public:
-	UART(uint32_t fcpu, uint32_t BAUDRATE);
-	uint8_t Write(const char* string);
-	char* WaitForReceive();
-	void SendNewLine();
-private:
-	uint8_t sendChar(char c);
-	char getChar();
-};
-
-
-
-
-#endif /* UART_H_ */
+void InitUART(unsigned int UART_adr, unsigned long BaudRate, unsigned char DataBit, char Parity);
+unsigned char CharReady(unsigned int UART_adr);
+char ReadChar(unsigned int UART_adr);
+void SendChar(unsigned int UART_adr, char Tegn);
+void SendString(unsigned int UART_adr, const char* Streng);
+void SendInteger(unsigned int UART_adr, int Tal);
+char* WaitForString(unsigned int UART_adr);
+/****************************************/

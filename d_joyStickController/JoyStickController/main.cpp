@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 //
-#include "UART.h"
+#include "uart.h"
 #include "ADC.h"
 
 //Data to send to arm controller
@@ -65,7 +65,7 @@ ISR(TIMER1_OVF_vect)
 
 int main(void)
 {
-	UART bluetooth(16e6, 9600);
+	InitUART(UART0, 9600, 8, 0);
 	EICRA |= 0b00000010; //Falling edge of PORTD pin 2
 	EIMSK |= 1; //Enable INT0 - PORTD pin 2	
 	
@@ -84,9 +84,12 @@ int main(void)
 		while(dataController->Continue())
 		{
 			dataController->GetData(buffer);
-			bluetooth.Write(buffer);
-			bluetooth.SendNewLine();
+			SendString(UART0, buffer);
+			SendString(UART0, "\n");
 		}
     }
+	
+	
+	
 }
 
