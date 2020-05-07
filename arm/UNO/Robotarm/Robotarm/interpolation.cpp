@@ -4,11 +4,11 @@
  * Created: 18/03/2020 17.36.42
  *  Author: jonas
  */ 
-#include "c_interpolation.h"
+#include "interpolation.h"
 #include "math.h"
 #include <stdio.h>
 #include "uart.h"
-#include "d_SysTime.h"
+#include "SysTime.h"
 
 
 Interpolation::Interpolation() {

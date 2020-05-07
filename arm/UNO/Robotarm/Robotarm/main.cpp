@@ -10,11 +10,11 @@
 #include <util/delay.h>
 #include <stdio.h>
 #include <avr/interrupt.h>
-#include "d_steppermotor.h"
+#include "steppermotor.h"
 #include "uart.h"
 #include "armGeometry.h"
-#include "c_interpolation.h"
-#include "d_SysTime.h"
+#include "interpolation.h"
+#include "SysTime.h"
 #include "BluetoothCommunicator.h"
 #include "Point.h"
 
