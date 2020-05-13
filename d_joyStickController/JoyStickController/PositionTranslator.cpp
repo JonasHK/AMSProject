@@ -41,7 +41,16 @@ uint8_t PositionTranslator::Translate(uint16_t xPos, uint16_t yPos)
 	
 }
 
-bool PositionTranslator::InRange(uint16_t num, uint16_t low, uint16_t high)
+float PositionTranslator::determinant(Vector v1, Vector v2)
 {
-	return (num > low-1) && (num < high+1);
+	
+}
+
+Vector PositionTranslator::normalize(uint16_t x, uint16_t y)
+{
+	
+}
+uint8_t PositionTranslator::angleToData(Vector fromADC, Vector low, Vector high)
+{
+	
 }

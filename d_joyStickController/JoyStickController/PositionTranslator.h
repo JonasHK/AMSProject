@@ -9,6 +9,10 @@
 #ifndef __POSITIONTRANSLATOR_H__
 #define __POSITIONTRANSLATOR_H__
 
+struct Vector{
+	float x;
+	float y;
+};
 
 class PositionTranslator
 {
@@ -23,7 +27,9 @@ public:
 	uint8_t Translate(uint16_t xPos, uint16_t yPos);
 protected:
 private:
-bool InRange(uint16_t num, uint16_t low, uint16_t high);
+float determinant(Vector v1, Vector v2);
+Vector normalize(uint16_t x, uint16_t y);
+uint8_t angleToData(Vector fromADC, Vector low, Vector high);
 
 }; //PositionTranslator
 
