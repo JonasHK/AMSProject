@@ -39,10 +39,6 @@ int main(void)
 	pin X_DIR_PIN(&DDRD,&PORTD,5,false);
 	pin Y_DIR_PIN(&DDRD,&PORTD,6,false);
 	pin Z_DIR_PIN(&DDRD,&PORTD,7,false);
-	
-	//pin* pinBase[] = {};
-	//pin* pinLow[] = {};
-	//pin* pinHigh[] = {};
 		
 	stepperMotor stepperBase(&X_STEP_PIN,&X_DIR_PIN);
 	stepperMotor stepperLow(&Y_STEP_PIN,&Y_DIR_PIN);
@@ -50,7 +46,9 @@ int main(void)
 
 	armGeometry geometry;
 	Interpolation interpolator;
+	BluetoothCommunicator btCom;
 	
+	// Setting up gearRatio
 	stepperHigh.setReductionRatio(32.0 / 9.0, 200*8);  //big gear: 32, small gear: 9, steps per rev: 200*8 - 1/8th step
 	stepperLow.setReductionRatio( 32.0 / 9.0, 200*8);
 	stepperBase.setReductionRatio(32.0 / 9.0, 200*8);
@@ -60,22 +58,21 @@ int main(void)
 	stepperLow.setPositionRad(0);			// 0°
 	stepperBase.setPositionRad(0);			// 0°
 	
-	// Init interpolation and uart
+	// Init micros(), uart and interpolation
 	initTimer();
 	InitUART(UART0,9600,8,0);
+	Point targetPoint = {0,120,120,0};	
 	interpolator.setCurrentPos(0,120,120,0);
-	//interpolator.setInterpolation(0,120,120,0, 0,120,120,0);
-	Point targetPoint = {0,120,120,0};
-	
-	BluetoothCommunicator btCom;
-	//Loop
-	int twice = 0;
 	interpolator.setInterpolation(targetPoint,10);
+	
+	//Loop
 	while (1)
 	{	
-		//SendString(UART0,"startWhile\n\r");
+		// Calc. where to be ATM
 		interpolator.updateActualPosition();
+		// Where to position the 3 motors
 		geometry.set(interpolator.getXPosmm(), interpolator.getYPosmm(), interpolator.getZPosmm());
+		//
 		stepperBase.stepToPositionRad(geometry.getRotRad());
 		stepperLow.stepToPositionRad(geometry.getLowRad());
 		stepperHigh.stepToPositionRad(geometry.getHighRad());
