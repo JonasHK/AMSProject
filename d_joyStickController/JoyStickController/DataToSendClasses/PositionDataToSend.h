@@ -10,10 +10,7 @@
 #define __POSITIONDATATOSEND_H__
 
 
-struct Vector{
-float x;
-float y;	
-};
+
 
 class PositionDataToSend : public BaseDataClass
 {
@@ -30,7 +27,7 @@ public:
 protected:
 private:
 ADConverter voltageReader;
-float determinant()
+
 
 }; //PositionDataToSend
 

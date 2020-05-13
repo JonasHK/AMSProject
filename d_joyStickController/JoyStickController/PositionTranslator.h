@@ -30,6 +30,7 @@ private:
 float determinant(Vector v1, Vector v2);
 Vector normalize(uint16_t x, uint16_t y);
 uint8_t angleToData(Vector fromADC, Vector low, Vector high);
+float length(Vector v);
 
 }; //PositionTranslator
 
