@@ -22,7 +22,7 @@ bool BluetoothCommunicator::Connected()
 Point BluetoothCommunicator::ReadData(Point oldTargetPoint)
 {
 	Point toReturn = {0,0,0,0};
-	SendString(UART0,"ReadData\n\r");
+	//SendString(UART0,"ReadData\n\r");
 	char data = {ReadChar(UART0)};
 	int hyp_factor = 2;
 	int a_factor = 3;
@@ -58,19 +58,17 @@ Point BluetoothCommunicator::ReadData(Point oldTargetPoint)
 			return calcPoint(oldTargetPoint,-1*a_factor,1*hyp_factor);
 			break;
 		case '9': //up
-			toReturn.zmm_ = 1;
+			toReturn.zmm_ = 5;
 			break;
 		case 'A': //down
-			toReturn.zmm_ = -1;
+			toReturn.zmm_ = -5;
 			break;
 		default:
 			toReturn.zmm_ = 0;
 			break;
 			
 	}
-	toReturn.emm_ *= 1;
-	toReturn.zmm_ *= 1;
-	toReturn.ymm_ *= 1;
-	toReturn.xmm_ *= 1;
+	
+	toReturn.emm_ = 1;
 	return addPoints(toReturn,oldTargetPoint);
 }
