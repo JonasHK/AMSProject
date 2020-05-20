@@ -4,6 +4,8 @@
 * Using UART0, UART1, UART2 or UART3            *
 *                                               *
 * Henning Hargaard, 2/4 2019                    *
+* Modified by Jonas Kristensen 20/5 2020		*
+* Added	WaitForString()							*
 *************************************************/
 #include <avr/io.h>
 #include <stdlib.h>

@@ -9,7 +9,6 @@
 #include <stdio.h>
 #include "uart.h"
 
-
 Interpolation::Interpolation() {
 	timer_ = SysTime(); // Init of timer for time measurements
 }
@@ -118,18 +117,8 @@ void Interpolation::updateActualPosition() {
   SendString(UART0,b);
   
   //ArcTan Approx.
-  /*float progress = atan((PI * t * tmul) - (PI * 0.5)) * 0.5 + 0.5;
-  if (progress >= 1.0) {
-    progress = 1.0; 
-    state = 1;
-  }*/
-  /* Testing t and tmul
-  SendString(UART0,"\n\r t*10000, tmul_*10000: ");
-  SendInteger(UART0,t*10000.0);
-  SendString(UART0,",");
-  SendInteger(UART0,tmul_*10000.0);
-  */
-  //Cosin Approx.
+  //float progress = atan((PI * t * tmul) - (PI * 0.5)) * 0.5 + 0.5; // Early smoothing implementation
+
   float progress = -cos(t * tmul_ * M_PI) * 0.5 + 0.5;
   if ((t * tmul_) >= 1.0) {	// Move is done!
     progress = 1.0; 
@@ -162,7 +151,6 @@ float Interpolation::getEPosmm() const{
 };
 	
 Point Interpolation::getPosmm() const{
-	 
 	  p;
 	 p.xmm_ = xPosmm_;
 	 p.ymm_ = yPosmm_;

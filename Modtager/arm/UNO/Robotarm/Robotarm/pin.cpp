@@ -36,4 +36,3 @@ bool pin::readValue(){
 	unsigned char x = (1 << pinno_);
 	return ~(*port_) & x;
 }
-

@@ -11,11 +11,8 @@
 #ifndef __BLUETOOTHCOMMUNICATOR_H__
 #define __BLUETOOTHCOMMUNICATOR_H__
 
-
-
 class BluetoothCommunicator
 {
-
 //functions
 public:
 	BluetoothCommunicator();

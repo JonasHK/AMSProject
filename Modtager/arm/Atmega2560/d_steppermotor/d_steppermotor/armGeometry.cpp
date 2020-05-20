@@ -4,6 +4,7 @@
  * Created: 12/03/2020 14.07.17
  *  Author: jonas
  */ 
+
 #include "armGeometry.h"
 #include <math.h>
 armGeometry::armGeometry(){
@@ -50,6 +51,7 @@ void armGeometry::calculateAng(){
 	rot_ =asin(xmm_ / RTop);
 	//Angle of high stepper motor
 	high_ = acos((RSide * 0.5) / 120.0) * 2.0;
+	
 	//Angle of low stepper motor
 	if (zmm_ > 0)
 	{
