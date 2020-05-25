@@ -29,8 +29,4 @@ private:
  float low_;
  float high_;
 };
-
-
-
-
 #endif /* ARMGEOMETRY_H_ */

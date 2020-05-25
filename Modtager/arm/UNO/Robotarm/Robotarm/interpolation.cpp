@@ -10,7 +10,6 @@
 #include "uart.h"
 #include "SysTime.h"
 
-
 Interpolation::Interpolation() {
 	state_ = 1;
 }
@@ -75,9 +74,6 @@ void Interpolation::setInterpolation(Point p0, Point p1, float av) {
 	float c = (p1.zmm_ - p0.zmm_);
 	float e = fabs(p1.emm_ - p0.emm_);
 	float dist = sqrt(a*a + b*b + c*c);
-	//SendInteger(UART0,dist);
-	//SendString(UART0,"\n\r");
-	
 	
 	if (v_ < 1) { //includes 0 = default value
 		v_ = sqrt(dist) * 10; //set a good value for v
@@ -88,8 +84,7 @@ void Interpolation::setInterpolation(Point p0, Point p1, float av) {
 	}
 	
 	tmul_ = v_ / dist;
-	//SendInteger(UART0,tmul_*100000);
-	//SendString(UART0,"\n\r");	
+
 	xStartmm_ = p0.xmm_;
 	yStartmm_ = p0.ymm_;
 	zStartmm_ = p0.zmm_;
@@ -103,8 +98,6 @@ void Interpolation::setInterpolation(Point p0, Point p1, float av) {
 	state_ = 0; // Begin moving!
 	
 	startTime_ = Micro();
-	//SendString(UART0,"\n\rstartTime_: ");
-	//SendInteger(UART0,startTime_/1000.0);
 }
 
 void Interpolation::updateActualPosition() {
@@ -113,21 +106,12 @@ void Interpolation::updateActualPosition() {
   }
   
   unsigned long microsek = Micro();  // Time now
-  //SendString(UART0,"\n\rmicrosek: ");
-  //SendInteger(UART0,microsek/1000.0);
   float t = (microsek - startTime_) / 1000000.0;  // Time since moving started in sec.
 
   //ArcTan Approx.
-  /*float progress = atan((PI * t * tmul) - (PI * 0.5)) * 0.5 + 0.5;
-  if (progress >= 1.0) {
-    progress = 1.0; 
-    state = 1;
-  }*/
-  //Cosin Approx.
-  //float progress = -cos(t * tmul_ * M_PI) * 0.5 + 0.5;
+  //float progress = atan((PI * t * tmul) - (PI * 0.5)) * 0.5 + 0.5; // Early smoothing movement implementation
+
   float progress = t * tmul_;
-  //SendInteger(UART0,t*1000);
-  //SendString(UART0,"\n\r");
   if ((t * tmul_) >= 1.0) {	// Move is done!
     progress = 1.0; 
     state_ = 1;

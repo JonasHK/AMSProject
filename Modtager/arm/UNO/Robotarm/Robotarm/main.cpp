@@ -65,18 +65,16 @@ int main(void)
 	interpolator.setCurrentPos(0,120,120,0);
 	interpolator.setInterpolation(targetPoint,10);
 	
-	//Loop
 	while (1)
 	{	
 		// Calc. where to be ATM
 		interpolator.updateActualPosition();
 		// Where to position the 3 motors
 		geometry.set(interpolator.getXPosmm(), interpolator.getYPosmm(), interpolator.getZPosmm());
-		//
+
 		stepperBase.stepToPositionRad(geometry.getRotRad());
 		stepperLow.stepToPositionRad(geometry.getLowRad());
 		stepperHigh.stepToPositionRad(geometry.getHighRad());
-		//SendString(UART0,"stepToPos..\n\r");
 		
 		stepperBase.update();
 		stepperLow.update();
@@ -84,68 +82,8 @@ int main(void)
 		
 		if (interpolator.isFinished())
 		{
-			//SendString(UART0,"IsFinnished()\n\r");
 			targetPoint = btCom.ReadData(targetPoint);
-			//printPoint(targetPoint);
 			interpolator.setInterpolation(targetPoint, 100);
 		}
-
-		
-		/*
-		if (nPushed == 0)
-		{
-			_delay_ms(1000);
-			nPushed = 1;
-			interpolator.setInterpolation(50,120,120,0,10);
-		}
-		
-		
-		if ((!ptest.readValue()) && nPushed == 0)
-		{
-			SendString(UART0,"Trykket ned\n\r");
-			SendInteger(UART0,interpolator.getZPosmm());
-			SendString(UART0,"\n\r");
-			interpolator.setInterpolation(10,120,120,0,6);
-			nPushed++;
-			_delay_ms(500);
-		}
-		
-		if ((ptest.readValue()) && nPushed == 1)
-		{
-			SendString(UART0,"Trykket ned\n\r");
-			interpolator.setInterpolation(0,120,0,0,6);
-			nPushed++;
-			_delay_ms(500);
-		}
-
-		if ((ptest.readValue()) && nPushed == 2)
-		{
-			SendString(UART0,"Trykket ned\n\r");
-			interpolator.setInterpolation(120,120,120,0,6);
-			nPushed++;
-			_delay_ms(500);
-		}
-		*/
 	}
-	
-	/*
-	// First test of motor driver	
-	int i = 0;
-	Y_DIR_PIN.low();
-	_delay_us(10);
-	_delay_ms(15000);
-	SendString(UART0,"H\n\r");
-	Y_STEP_PIN.high();
-	_delay_ms(1);
-	
-	SendString(UART0,"L\n\r");
-	Y_STEP_PIN.low();
-	_delay_ms(1);
-	
-	i++;
-	
-	while (1)
-	{}
-	*/
 }
-

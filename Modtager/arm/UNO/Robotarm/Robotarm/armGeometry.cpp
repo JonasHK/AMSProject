@@ -7,7 +7,6 @@
 #include "armGeometry.h"
 #include <math.h>
 armGeometry::armGeometry(){
-	
 }
 
 void armGeometry::set(float xmm, float ymm, float zmm){

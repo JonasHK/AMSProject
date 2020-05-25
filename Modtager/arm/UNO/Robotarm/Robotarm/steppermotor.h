@@ -29,7 +29,7 @@ class stepperMotor
 	  
 	void update();
 	void setReductionRatio(float gearRatio, int stepsPerRev);
-	void step(bool clockwice);
+
 	private:
 	
 	int stepperStepTargetPosition_;
@@ -39,7 +39,4 @@ class stepperMotor
 	pin* dirPinP_;
 	  
 	float radToStepFactor_;
-	
-	pin* pins_[4];
-	unsigned char currentPin_;
 };

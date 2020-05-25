@@ -5,10 +5,8 @@
 * Author: troel
 */
 
-
 #include "BluetoothCommunicator.h"
 #include <stdlib.h>
-
 
 // default constructor
 BluetoothCommunicator::BluetoothCommunicator()
@@ -22,7 +20,6 @@ bool BluetoothCommunicator::Connected()
 Point BluetoothCommunicator::ReadData(Point oldTargetPoint)
 {
 	Point toReturn = {0,0,0,0};
-	//SendString(UART0,"ReadData\n\r");
 	char data = {ReadChar(UART0)};
 	int hyp_factor = 2;
 	int a_factor = 3;
@@ -65,8 +62,7 @@ Point BluetoothCommunicator::ReadData(Point oldTargetPoint)
 			break;
 		default:
 			toReturn.zmm_ = 0;
-			break;
-			
+			break;			
 	}
 	
 	toReturn.emm_ = 1;
